@@ -1,7 +1,7 @@
 var States = {
     'default': {
         activeIntents: ['Welcome',"Report","Location"],
-        middleware: ['logInput']
+        middleware: []
     }
 }
 
