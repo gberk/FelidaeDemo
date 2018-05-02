@@ -1,7 +1,13 @@
 var States = {
     'default': {
-        activeIntents: ['Welcome',"Report","Location"],
+        activeIntents: ['Welcome'],
         middleware: []
+    },
+    'isPublicSafetyResponse': {
+        activeIntents: ["ConfirmEmergency", "DenyEmergency"],
+        middleware: ["RespondToYesNo"],
+        affirmative: "ConfirmEmergency",
+        negative: "DenyEmergency"
     }
 }
 
