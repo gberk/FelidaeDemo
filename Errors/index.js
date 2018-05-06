@@ -1,6 +1,6 @@
 // Ayva State manager
 var Ayva = require('ayva')
-var StateManager = Ayva.StateManager
+var StateManager = require('../DataStores/StateProvider')
 
 var InactiveIntentErrorHandler = function(Context){
     StateManager.getState(Context).then(function(state) {

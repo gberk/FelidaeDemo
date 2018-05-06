@@ -1,13 +1,13 @@
 StateProvider = function(){
     var userStateStore = {};
     return {
-        getState: () => {
+        getState: (Context) => {
             return new Promise((resolve, reject) =>{
-                return resolve("default")
+                return resolve(userStateStore[Context.deviceProfile.id] || "default")
             }) 
         },
-        setState: (Context) => {
-            
+        setState: (Context, state) => {
+            userStateStore[Context.deviceProfile.id] = state
         }
     }
 }()

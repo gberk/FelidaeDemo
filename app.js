@@ -12,6 +12,7 @@ var IntentMap = require('./Intents')
 var States = require('./states')
 var Errors = require('./Errors')
 var StateProvider = require('./DataStores/StateProvider')
+var Middleware = require('./Middleware')
 
 // var Ayva = require('ayva')
 var Ayva = require('../ayva')
@@ -19,7 +20,8 @@ var Ayva = require('../ayva')
 //Ayva Config
 Ayva.Config.RegisterIntents(IntentMap);
 Ayva.Config.RegisterStates(States);
-Ayva.Config.RegisterErrors(Errors)
+Ayva.Config.RegisterErrors(Errors);
+Ayva.Config.RegisterMiddleware(Middleware);
 Ayva.Config.StateProvider(StateProvider); //Change this for applications with non-trivial state
 
 app.post('/gAssistant', function(req, res) {

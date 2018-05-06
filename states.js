@@ -3,11 +3,14 @@ var States = {
         activeIntents: ['Welcome'],
         middleware: []
     },
-    'isPublicSafetyResponse': {
-        activeIntents: ["ConfirmEmergency", "DenyEmergency"],
+    'gettingPublicSafetyResponse': {
+        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation"],
         middleware: ["RespondToYesNo"],
-        affirmative: "ConfirmEmergency",
-        negative: "DenyEmergency"
+        affirmative: "RequestLocation",
+        negative: "GetTimeOfSighting"
+    },
+    'gettingGPSLocation': {
+        activeIntents: ["permission_fulfillment"]
     }
 }
 
