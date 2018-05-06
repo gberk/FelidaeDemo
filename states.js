@@ -4,10 +4,16 @@ var States = {
         middleware: []
     },
     'gettingPublicSafetyResponse': {
-        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation"],
+        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation", "RequestPastOrPresentSighting"],
         middleware: ["RespondToYesNo"],
         affirmative: "RequestLocation",
-        negative: "GetTimeOfSighting"
+        negative: "RequestPastOrPresentSighting"
+    },
+    'gettingPresentSighting': {
+        activeIntents: ["Affirmative","Negative","RequestDayOfSighting","RequestLocation"],
+        middleware: ["RespondToYesNo"],
+        affirmative: "RequestLocation",
+        negative: "RequestDayOfSighting"
     },
     'gettingGPSLocation': {
         activeIntents: ["permission_fulfillment"]
