@@ -10,10 +10,13 @@ var States = {
         negative: "RequestPastOrPresentSighting"
     },
     'gettingPresentSighting': {
-        activeIntents: ["Affirmative","Negative","RequestDayOfSighting","RequestLocation"],
+        activeIntents: ["Affirmative","Negative","Earlier","RequestDayOfSighting","RequestLocation"],
         middleware: ["RespondToYesNo"],
         affirmative: "RequestLocation",
         negative: "RequestDayOfSighting"
+    },
+    'gettingDayOfSighting': {
+        activeIntents: [""]
     },
     'gettingGPSLocation': {
         activeIntents: ["permission_fulfillment"]
