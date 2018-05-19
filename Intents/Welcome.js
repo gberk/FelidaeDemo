@@ -1,11 +1,10 @@
 var StateProvider = require('../DataStores/StateProvider')
-const followUpState = "gettingPublicSafetyResponse";
 
 var Welcome = function(Context){
-    StateProvider.setState(Context, followUpState)
+    StateProvider.setState(Context, "gettingPublicSafetyResponse")
 
     Context.assistant
-        .say("Is this concerning immediate public safety?")
+        .say("Welcome to Felidae Fund's puma sightings report tool. Is this concerning immediate public safety?")
         .finish()
 }
 
