@@ -1,9 +1,9 @@
-var StateProvider = require('../DataStores/StateProvider');
+var StateProvider = require('../DataStores/StateProvider')
 
 var RequestPastOrPresentSighting = function(Context){
     StateProvider.setState(Context, "gettingPresentSighting")
     Context.assistant
-        .say("Did this sighting occur just now?")
+        .say("Good to hear you are safe. Did this sighting just occur?")
         .finish()
 }
 
