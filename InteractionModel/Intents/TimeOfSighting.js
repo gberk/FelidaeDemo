@@ -1,7 +1,9 @@
 var TimeOfSighting = {
     name: "TimeOfSighting",
     utterances: [
-        "{'preciseTime': '2PM'}",
+        "{'preciseTime': '3:40'}",
+        "{'preciseTime': '4 am'}",
+        "{'preciseTime': '2 PM'}",
         "Around {'preciseTime': 'noon'}",
         "It was {'generalTime': 'late afternoon'}",
         "It was in {'generalTime': 'the morning'}"

@@ -9,7 +9,16 @@ var GrabLocation = {
         "{'streetAddress':'Deer Run'} {'city':'Columbus'}",
         "{'streetAddress':'Deer Run'}",
         "{'city':'Columbus'}",
-        "In {'city': 'Framingham'}"
+        "In {'city': 'Framingham'}",
+        "{'park':'Point Reyes national park'}",
+        "{'landmark':'coit tower'}",
+        "the {'localBusiness':'starbucks'} in {'city':'marin'}",
+        "{'localBusiness':'jiffy lube'} in {'city':'san francisco'}",
+        "next to {'localBusiness':'village'} in {'city':'oakland'}",
+        "next to the {'localBusiness':'mcdonalds'} in {'city':'columbus'}",
+        "near the {'localBusiness':'cafe'} in {'city':'sonoma'}",
+        "near {'localBusiness':'Joinery'} in {'city':'sausalito'}",
+        "a few feet from {'localBusiness':'Bar Bocce'} in {'city':'sausalito'}",
     ],
     slots: {
         "fullAddress" : {
@@ -30,6 +39,30 @@ var GrabLocation = {
         },
         "city" : {
             dataType: ["@sys.geo-city-us", "AMAZON.US_CITY"],
+            isList: false,
+            required: false,
+            prompts: [
+                "Sorry, I didn't get your location. Could you say it again?"
+            ]
+        },
+        "park" : {
+            dataType: ["@sys.place-attraction-us", "AMAZON.CivicStructure"],
+            isList: false,
+            required: false,
+            prompts: [
+                "Sorry, I didn't get your location. Could you say it again?"
+            ]
+        },
+        "landmark" : {
+            dataType: ["@sys.location", "AMAZON.LandmarksOrHistoricalBuildings"],
+            isList: false,
+            required: false,
+            prompts: [
+                "Sorry, I didn't get your location. Could you say it again?"
+            ]
+        },
+        "localBusiness" : {
+            dataType: ["@sys.location", "AMAZON.LocalBusiness"],
             isList: false,
             required: false,
             prompts: [
