@@ -4,13 +4,13 @@ var States = {
         middleware: []
     },
     'gettingPublicSafetyResponse': {
-        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation", "RequestPastOrPresentSighting"],
+        activeIntents: ["Welcome","Affirmative","Negative"],
         middleware: ["RespondToYesNo"],
         affirmative: "RequestLocation",
         negative: "RequestPastOrPresentSighting"
     },
     'gettingPresentSighting': {
-        activeIntents: ["Welcome","Affirmative","Negative","Earlier","RequestDayOfSighting","RequestLocation"],
+        activeIntents: ["Welcome","Affirmative","Negative","Earlier"],
         middleware: ["RespondToYesNo"],
         affirmative: "RequestLocation",
         negative: "RequestDayOfSighting"
@@ -19,10 +19,7 @@ var States = {
         activeIntents: ["Welcome"]
     },
     'gettingGPSLocation': {
-        activeIntents: ["Welcome","permission_fulfillment","RequestLocation"],
-        middleware: ["RespondToYesNo"],
-        affirmative: "permission_fulfillment",
-        negative: "RequestLocation"
+        activeIntents: ["Welcome","permission_fulfillment"]
     },
     'gettingLocation': {
         activeIntents: ["Welcome","GrabLocation"],

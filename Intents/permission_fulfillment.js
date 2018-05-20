@@ -11,10 +11,6 @@ var smsBody = "This is a sightings alert!"
 
 var permission_fulfillment = function(Context){
 
-    console.log("Context: %j", Context)
-
-    
-
     // Twilio messaging service
     // Promise.all(felidaeFundTeam.map(number => {
     //     return twilio.messages.create({
