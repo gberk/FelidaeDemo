@@ -25,7 +25,7 @@ var States = {
         negative: "RequestLocation"
     },
     'gettingLocation': {
-        activeIntents: ["Welcome","GrabLocation"],
+        activeIntents: ["Welcome","RecordLocation"],
         middleware: []
     }
 }

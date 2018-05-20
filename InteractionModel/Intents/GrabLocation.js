@@ -13,8 +13,7 @@ var GrabLocation = {
     ],
     slots: {
         "fullAddress" : {
-            dataType: "@sys.address",
-            dataType_alexa: "AMAZON.PostalAddress",
+            dataType: ["@sys.address", "AMAZON.PostalAddress"],
             isList: false,
             required: false,
             prompts: [
@@ -22,8 +21,7 @@ var GrabLocation = {
             ]
         },
         "streetAddress" : {
-            dataType: "@sys.street-address",
-            dataType_alexa: "AMAZON.StreetAddress",
+            dataType: ["@sys.street-address", "AMAZON.StreetAddress"],
             isList: false,
             required: false,
             prompts: [
@@ -31,8 +29,7 @@ var GrabLocation = {
             ]
         },
         "city" : {
-            dataType: "@sys.geo-city-us",
-            dataType_alexa: "AMAZON.US_CITY",
+            dataType: ["@sys.geo-city-us", "AMAZON.US_CITY"],
             isList: false,
             required: false,
             prompts: [

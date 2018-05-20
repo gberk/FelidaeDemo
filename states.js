@@ -24,7 +24,7 @@ var States = {
         middleware: []
     },
     'gettingLocation': {
-        activeIntents: ["Welcome","GrabLocation"],
+        activeIntents: ["Welcome","RecordLocation"],
         middleware: []
     }
 }
