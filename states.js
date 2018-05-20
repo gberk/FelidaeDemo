@@ -19,7 +19,7 @@ var States = {
         activeIntents: [""]
     },
     'gettingGPSLocation': {
-        activeIntents: ["permission_fulfillment"]
+        activeIntents: ["permission_fulfillment", "finalSummary"]
     }
 }
 
