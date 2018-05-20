@@ -8,5 +8,6 @@ Intents.RequestPastOrPresentSighting = require("./RequestPastOrPresentSighting")
 Intents.RequestDayOfSighting = require('./RequestDayOfSighting')
 Intents.GrabLocation = require('./Summary')
 Intents.DateTimeOfSighting = require('./RecordDayOfSighting')
+Intents.TimeOfSighting = require('./RecordTimeOfSighting')
 
 module.exports = Intents;

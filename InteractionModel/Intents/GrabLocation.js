@@ -1,4 +1,3 @@
-// Name Intent
 var GrabLocation = {
     name: 'GrabLocation',
     utterances: [
@@ -9,7 +8,8 @@ var GrabLocation = {
         "{'fullAddress':'700 Deer Run Columbus Ohio 43230'}",
         "{'streetAddress':'Deer Run'} {'city':'Columbus'}",
         "{'streetAddress':'Deer Run'}",
-        "{'city':'Columbus'}"
+        "{'city':'Columbus'}",
+        "In {'city': 'Framingham'}"
     ],
     slots: {
         "fullAddress" : {

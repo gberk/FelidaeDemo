@@ -23,8 +23,11 @@ var States = {
         activeIntents: ["Welcome","permission_fulfillment"],
         middleware: []
     },
+    'gettingTimeOfSighting': {
+        activeIntents: ["Welcome", "TimeOfSighting"]
+    },
     'gettingLocation': {
-        activeIntents: ["Welcome","RecordLocation"],
+        activeIntents: ["Welcome","GrabLocation"],
         middleware: []
     }
 }
