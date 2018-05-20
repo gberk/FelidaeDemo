@@ -4,22 +4,24 @@ const twilio = require('twilio')(
 )
 const StateProvider = require('../DataStores/StateProvider')
 
-var felidaeFundTeam = [process.env.RFLABS_NUMBER, "+17325464315"]
-var smsBody = 'Hello from Felidae Fund Sightings Report app'
+// Phone numbers to alert with SMS
+var felidaeFundTeam = [process.env.RFLABS_NUMBER, process.env.KEVIN_NUMBER]
+// SMS message
+var smsBody = "This is a sightings alert!"
 
 var permission_fulfillment = function(Context){
-    StateProvider.setState(Context, "gettingPublicSafetyResponse")
 
+    // Twilio messaging service
     Promise.all(felidaeFundTeam.map(number => {
         return twilio.messages.create({
             to: number,
             from: process.env.TWILIO_MESSAGING_SERVICE_SID,
             body: smsBody
         })
-    })).then((message) => {
-        console.log(message.sid)
-    }).catch((error) => {
-        console.log(error)
+    })).then(message => {
+        console.log("Message SID: " + message.sid)
+    }).catch(err => {
+        console.log(err)
     })
 
     Context.assistant
