@@ -16,10 +16,12 @@ var States = {
         negative: "RequestDayOfSighting"
     },
     'gettingDayOfSighting': {
-        activeIntents: ["Welcome"]
+        activeIntents: ["Welcome"],
+        middleware: []
     },
     'gettingGPSLocation': {
-        activeIntents: ["Welcome","permission_fulfillment"]
+        activeIntents: ["Welcome","permission_fulfillment"],
+        middleware: []
     },
     'gettingLocation': {
         activeIntents: ["Welcome","GrabLocation"],
