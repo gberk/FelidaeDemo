@@ -12,18 +12,20 @@ var smsBody = "This is a sightings alert!"
 var permission_fulfillment = function(Context){
 
     // Twilio messaging service
-    // Promise.all(felidaeFundTeam.map(number => {
-    //     return twilio.messages.create({
-    //         to: number
-    //         from: process.env.TWILIO_MESSAGING_SERVICE_SID,
-    //         body: smsBody
-    //     })
-    // })).then(message => {
-    //     console.log("Alert Felidae Fund team SMS sent!")
-    // }).catch(err => {
-    //     console.log(err)
-    // })
-
+    if (process.env.TWILIO_TRIGGER === 'active') {
+        Promise.all(felidaeFundTeam.map(number => {
+            return twilio.messages.create({
+                to: number,
+                from: process.env.TWILIO_MESSAGING_SERVICE_SID,
+                body: smsBody
+            })
+        })).then(message => {
+            console.log("Alert Felidae Fund team SMS sent!")
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    
     if (Context.location) {
         Context.assistant
             .say("Sighting has been reported." 
@@ -38,13 +40,10 @@ var permission_fulfillment = function(Context){
         StateProvider.setState(Context, "gettingLocation")
         Context.assistant
             .say("Can you tell me the the name of the nearest landmark " 
-            + "or nearest address to where you sighted the puma?" 
-        )
-        .finish();
+                + "or nearest address to where you sighted the puma?" 
+            )
+            .finish();
     }
-
-    
-    
 }
 
 module.exports = permission_fulfillment;
