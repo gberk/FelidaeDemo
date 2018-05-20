@@ -6,5 +6,6 @@ Intents.JustOccurred = Intents.RequestLocation;
 Intents.permission_fulfillment = require('./permission_fulfillment');
 Intents.RequestPastOrPresentSighting = require("./RequestPastOrPresentSighting")
 Intents.RequestDayOfSighting = require('./RequestDayOfSighting')
+Intents.GrabLocation = require('./Summary')
 
 module.exports = Intents;
