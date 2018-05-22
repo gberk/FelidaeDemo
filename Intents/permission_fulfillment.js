@@ -12,24 +12,26 @@ var smsBody = "This is a sightings alert!"
 var permission_fulfillment = function(Context){
 
     // Twilio messaging service
-    // Promise.all(felidaeFundTeam.map(number => {
-    //     return twilio.messages.create({
-    //         to: number
-    //         from: process.env.TWILIO_MESSAGING_SERVICE_SID,
-    //         body: smsBody
-    //     })
-    // })).then(message => {
-    //     console.log("Alert Felidae Fund team SMS sent!")
-    // }).catch(err => {
-    //     console.log(err)
-    // })
-
+    if (process.env.TWILIO_TRIGGER === 'active') {
+        Promise.all(felidaeFundTeam.map(number => {
+            return twilio.messages.create({
+                to: number,
+                from: process.env.TWILIO_MESSAGING_SERVICE_SID,
+                body: smsBody
+            })
+        })).then(message => {
+            console.log("Alert Felidae Fund team SMS sent!")
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    
     if (Context.location) {
         Context.assistant
             .say("Sighting has been reported." 
                 + "Your report number is 1234. " 
                 + "If you'd like to follow up with a Felidae Fund staff member, "
-                + "please email us at founders@refreshlabs.co or call us at 415-111-1111. "
+                + "please email us at info@felidaefund.org or call us at 415-354-5655. "
                 + "You can always come back to ask us about your report number or how to contact us. "
                 + "Thank you for the report. Good bye!"
             )
@@ -38,13 +40,10 @@ var permission_fulfillment = function(Context){
         StateProvider.setState(Context, "gettingLocation")
         Context.assistant
             .say("Can you tell me the the name of the nearest landmark " 
-            + "or nearest address to where you sighted the puma?" 
-        )
-        .finish();
+                + "or nearest address to where you sighted the puma?" 
+            )
+            .finish();
     }
-
-    
-    
 }
 
 module.exports = permission_fulfillment;
