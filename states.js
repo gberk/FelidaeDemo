@@ -24,7 +24,7 @@ var States = {
         middleware: []
     },
     'gettingTimeOfSighting': {
-        activeIntents: ["Welcome", "TimeOfSighting"]
+        activeIntents: ["Welcome", "DateTimeOfSighting"]
     },
     'gettingLocation': {
         activeIntents: ["Welcome","GrabLocation"],

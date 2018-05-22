@@ -11,9 +11,6 @@ var RecordDayOfSighting = function(Context){
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
-    console.log(Context.args.dateOfSighting)
-    console.log(dateMatch)
-    console.log(timeMatch)
 
     //DATE PREPROCESSING
     //Is the date in the future? Rewind to this year
@@ -21,34 +18,55 @@ var RecordDayOfSighting = function(Context){
     // {}
     //Is there just a time? Assume today.
     
+    StateProvider.getState(Context).then(userState => {
+        if(userState == stateForTimeFollowUp)
+        {
+            //We're currently ignoring the case where someone specifies a date first, and then a date and time as a follow up
+            if(!timeMatch)
+            {
+                Context.assistant
+                .say("I didn't get that. Around what time did you see the animal? If you don't remember, you can say I don't remember")
+                .finish()
+            } else {
+                StateProvider.setState(Context, stateForLocationFollowUp)
+                Context.assistant
+                    .say("Got it. Can you tell me the the name of the nearest landmark " 
+                    + "or nearest address to where you saw the puma?")
+                    .finish()
+            }
+        } else {
+            //DETERMINE NEXT STATE
+            //CASE: No date or time provided
+            if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
+            {
+                Context.assistant
+                    .say("I didn't get that. When did this sighting occur? If you don't remember, you can just say I don't remember")
+                    .finish()
+            }
+    
+            //CASE: Date only
+            else if(dateMatch && !timeMatch)
+            {
+                StateProvider.setState(Context, stateForTimeFollowUp)
+                Context.assistant
+                    .say("Thanks. What time did this sighting occur?")
+                    .finish()
+            }
+    
+            //CASE: Date and Time
+            else //Is this enough?
+            {
+                StateProvider.setState(Context, stateForLocationFollowUp)
+                Context.assistant
+                    .say("Got it. Can you tell me the the name of the nearest landmark " 
+                    + "or nearest address to where you saw the puma?")
+                    .finish()
+            }
+        }
+    })
+    //If we're coming back through to get the time
+    
 
-    //DETERMINE NEXT STATE
-    //CASE: No date or time provided
-    if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
-    {
-        Context.assistant
-            .say("I didn't get that. When did this sighting occur? If you don't remember, you can just say I don't remember")
-            .finish()
-    }
-
-    //CASE: Date only
-    else if(dateMatch && !timeMatch)
-    {
-        StateProvider.setState(Context, stateForTimeFollowUp)
-        Context.assistant
-            .say("Thanks. What time did this sighting occur?")
-            .finish()
-    }
-
-    //CASE: Date and Time
-    else //Is this enough?
-    {
-        StateProvider.setState(Context, stateForLocationFollowUp)
-        Context.assistant
-            .say("Got it. Can you tell me the the name of the nearest landmark " 
-            + "or nearest address to where you saw the puma?")
-            .finish()
-    }
 
 }
 
