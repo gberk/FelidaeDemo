@@ -25,13 +25,14 @@ var RecordDayOfSighting = function(Context){
             if(!timeMatch)
             {
                 Context.assistant
-                .say("I didn't get that. Around what time did you see the animal? If you don't remember, you can say I don't remember")
+                .say("I didn't get that. Around what time did you sight the puma? " +
+                     "If you don't remember, you can say I don't remember")
                 .finish()
             } else {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 Context.assistant
-                    .say("Got it. Can you tell me the the name of the nearest landmark " 
-                    + "or nearest address to where you saw the puma?")
+                    .say("Got it. Can you tell me the the name of the " 
+                    + "nearest address to where you saw the puma?")
                     .finish()
             }
         } else {
@@ -40,7 +41,8 @@ var RecordDayOfSighting = function(Context){
             if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
             {
                 Context.assistant
-                    .say("I didn't get that. When did this sighting occur? If you don't remember, you can just say I don't remember")
+                    .say("I didn't get that. Around what time did you sight the puma? " +
+                         "If you don't remember, you can just say I don't remember")
                     .finish()
             }
     
@@ -49,7 +51,7 @@ var RecordDayOfSighting = function(Context){
             {
                 StateProvider.setState(Context, stateForTimeFollowUp)
                 Context.assistant
-                    .say("Thanks. What time did this sighting occur?")
+                    .say("Thanks. Around what time did you sight the puma?")
                     .finish()
             }
     
@@ -58,8 +60,8 @@ var RecordDayOfSighting = function(Context){
             {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 Context.assistant
-                    .say("Got it. Can you tell me the the name of the nearest landmark " 
-                    + "or nearest address to where you saw the puma?")
+                    .say("Got it. Can you tell me the the name of the " 
+                    + "nearest address to where you saw the puma?")
                     .finish()
             }
         }

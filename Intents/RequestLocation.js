@@ -7,8 +7,8 @@ var RequestLocation = function(Context){
     if(!Context.deviceProfile.isMobile())  {
         StateProvider.setState(Context, "gettingLocation")
         Context.assistant
-            .say("Can you tell me the the name of the nearest landmark " 
-            + "or nearest address to where you sighted the puma?" 
+            .say("Can you tell me the the name of the " 
+            + "nearest address to where you sighted the puma?" 
         )
             .finish()
     } else {
