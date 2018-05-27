@@ -17,7 +17,7 @@ var StateProvider = require('./DataStores/StateProvider')
 var Middleware = require('./Middleware')
 
 // var Ayva = require('ayva')
-var Ayva = require('../ayva')
+var Ayva = require('ayva')
 
 //Ayva Config
 Ayva.Config.RegisterIntents(IntentMap);
