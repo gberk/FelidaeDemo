@@ -16,7 +16,7 @@ var RequestLocation = function(Context){
         //Move state to gettingGPSLocation
         StateProvider.setState(Context, "gettingGPSLocation")
         Context.assistant
-            .location()
+            .location("I'll need your location in order to report this sighting. To grab your current location,")
             .finish()    
     }
 }
