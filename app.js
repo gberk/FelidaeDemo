@@ -8,6 +8,8 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 require('dotenv').config()
 
+app.use(express.static('public'))
+
 var IntentMap = require('./Intents')
 var States = require('./states')
 var Errors = require('./Errors')
@@ -30,6 +32,10 @@ app.post('/gAssistant', function(req, res) {
 
 app.post('/alexa', function(req, res) {
     Ayva.ExecuteRequest.FromAlexa(req.body, res);    
+})
+
+app.get('/privacyPolicy', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/privacyPolicy.html'))
 })
 
 server.listen(process.env.PORT || 8080, function() {

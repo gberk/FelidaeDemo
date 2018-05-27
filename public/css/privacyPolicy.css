@@ -1,0 +1,52 @@
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+}
+
+hr {
+    width: 100%;
+    font-size: 1px;
+    border: none;
+    border-top: 1px solid #EBEBEB;
+}
+
+.privacyPolicyContainer {
+    display: flex;
+    width:55%;
+    padding-top: 2em;
+    flex-direction: column;
+}
+
+.privacyPolicyContainer {
+    
+}
+
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1em;
+}
+
+.sectionContainer span {
+    padding-bottom:1em;
+    color: #828282;
+}
+
+.sectionContainer li {
+    color: #828282;
+    padding-bottom: .5em;
+}
+
+.subSection {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-self: center;
+}
+
+
+.bulletTitle {
+    font-weight: 900;
+}
