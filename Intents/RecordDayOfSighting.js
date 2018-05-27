@@ -31,8 +31,8 @@ var RecordDayOfSighting = function(Context){
             } else {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 Context.assistant
-                    .say("Got it. Can you tell me the the name of the " 
-                    + "nearest address to where you saw the puma?")
+                    .say("Got it. Can you tell me an address " 
+                    + "nearest to where you saw the puma?")
                     .finish()
             }
         } else {
@@ -60,8 +60,8 @@ var RecordDayOfSighting = function(Context){
             {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 Context.assistant
-                    .say("Got it. Can you tell me the the name of the " 
-                    + "nearest address to where you saw the puma?")
+                    .say("Got it. Can you tell me an address " 
+                    + "nearest to where you saw the puma?")
                     .finish()
             }
         }

@@ -39,8 +39,8 @@ var permission_fulfillment = function(Context){
     } else {
         StateProvider.setState(Context, "gettingLocation")
         Context.assistant
-            .say("Can you tell me the the name of the " 
-                + "nearest address to where you sighted the puma?" 
+            .say("Can you tell me an address " 
+                + "nearest to where you sighted the puma?" 
             )
             .finish();
     }
