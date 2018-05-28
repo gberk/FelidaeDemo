@@ -11,7 +11,6 @@ var RecordDayOfSighting = function(Context){
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
-    console.log(dateMatch, timeMatch)
 
     //DATE PREPROCESSING
     //Is the date in the future? Rewind to this year
