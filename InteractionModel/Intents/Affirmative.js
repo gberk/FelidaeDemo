@@ -9,7 +9,8 @@ const Affirmative = {
         "Sure",
         "It is",
         "Totally",
-        "It did"
+        "It did",
+        "Yea"
     ]
 }
 
