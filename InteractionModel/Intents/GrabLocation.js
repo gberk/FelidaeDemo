@@ -12,6 +12,8 @@ var GrabLocation = {
         "In {'city': 'Framingham'}",
         "{'park':'Point Reyes national park'}",
         "{'landmark':'coit tower'}",
+        "I was in {'landmark': 'the boston common'}",
+        "At {'landmark': 'Pismo Beach'}",
         "the {'localBusiness':'starbucks'} in {'city':'marin'}",
         "{'localBusiness':'jiffy lube'} in {'city':'san francisco'}",
         "next to {'localBusiness':'village'} in {'city':'oakland'}",
@@ -19,6 +21,10 @@ var GrabLocation = {
         "near the {'localBusiness':'cafe'} in {'city':'sonoma'}",
         "near {'localBusiness':'Joinery'} in {'city':'sausalito'}",
         "a few feet from {'localBusiness':'Bar Bocce'} in {'city':'sausalito'}",
+        "At {'fullAddress':'300 Turney Street Sausalito California'}",
+        "At {'streetAddress':'Turney Street'} {'city':'Sausalito'}",
+        "Over at {'fullAddress':'300 Turney Street Sausalito California'}",
+        "Over at {'streetAddress':'Turney Street'} {'city':'Sausalito'}"
     ],
     slots: {
         "fullAddress" : {

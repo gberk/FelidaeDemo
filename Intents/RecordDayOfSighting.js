@@ -11,6 +11,7 @@ var RecordDayOfSighting = function(Context){
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
+    console.log(dateMatch, timeMatch)
 
     //DATE PREPROCESSING
     //Is the date in the future? Rewind to this year
@@ -25,7 +26,7 @@ var RecordDayOfSighting = function(Context){
             if(!timeMatch)
             {
                 Context.assistant
-                .say("I didn't get that. Around what time did you sight the puma? " +
+                .say("I didn't get that. Around what time of day did you sight the puma? " +
                      "If you don't remember, you can say I don't remember")
                 .finish()
             } else {
@@ -51,7 +52,7 @@ var RecordDayOfSighting = function(Context){
             {
                 StateProvider.setState(Context, stateForTimeFollowUp)
                 Context.assistant
-                    .say("Thanks. Around what time did you sight the puma?")
+                    .say("Thanks. Around what time of day did you sight the puma?")
                     .finish()
             }
     

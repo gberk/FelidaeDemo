@@ -1,7 +1,12 @@
 const Negative = {
     name: "Negative",
     utterances: [
-        "No"
+        "No",
+        "Nope",
+        "Nah",
+        "Negative",
+        "It did not",
+        "It didn't"
     ]
 }
 

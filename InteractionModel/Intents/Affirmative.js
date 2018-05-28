@@ -1,7 +1,15 @@
 const Affirmative = {
     name: "Affirmative",
     utterances: [
-        "Yes"
+        "Yes",
+        "Yeah",
+        "Yep",
+        "Yup",
+        "Yah",
+        "Sure",
+        "It is",
+        "Totally",
+        "It did"
     ]
 }
 
