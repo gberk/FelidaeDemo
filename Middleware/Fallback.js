@@ -8,7 +8,9 @@ var Fallback = function(Context){
         else {
             UserStore.get(Context)
                 .then((data) => {
-                    Context.assistant.say(data.previousMessage)
+                    Context.assistant
+                    .say("Sorry, I didn't get that. ")
+                    .say(data.previousMessage)
                     resolve()
                 })    
         }

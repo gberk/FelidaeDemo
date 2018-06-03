@@ -15,4 +15,3 @@ var InactiveIntentErrorHandler = function(Context){
 module.exports = {
     "InactiveIntentError": InactiveIntentErrorHandler,
 }
-
