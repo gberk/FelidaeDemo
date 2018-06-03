@@ -3,21 +3,21 @@ var States = {
         activeIntents: ['Welcome'],
     },
     'gettingPublicSafetyResponse': {
-        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation", "RequestPastOrPresentSighting","Skip"],
+        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation", "RequestPastOrPresentSighting","IDK"],
         middleware: ["RespondToYesNo", "Skip"],
         affirmative: "RequestLocation",
         negative: "RequestPastOrPresentSighting",
         skipTo: "RequestPastOrPresentSighting"
     },
     'gettingPresentSighting': {
-        activeIntents: ["Welcome","Affirmative","Negative","Earlier","RequestDayOfSighting","RequestLocation", "Skip"],
+        activeIntents: ["Welcome","Affirmative","Negative","Earlier","RequestDayOfSighting","RequestLocation", "IDK"],
         middleware: ["RespondToYesNo", "Skip"],
         affirmative: "RequestLocation",
         negative: "RequestDayOfSighting",
         skipTo: "RequestDayOfSighting"
     },
     'gettingDayOfSighting': {
-        activeIntents: ["Welcome", "Skip"],
+        activeIntents: ["Welcome", "IDK"],
         middleware: ["Skip"],
         skipTo: "Summary"
     },
@@ -28,7 +28,7 @@ var States = {
         negative: "RequestLocation",
     },
     'gettingLocation': {
-        activeIntents: ["Welcome","RecordLocation", "Skip"],
+        activeIntents: ["Welcome","RecordLocation", "IDK"],
         middleware: ["Skip"],
         skipTo: "Summary"
     }

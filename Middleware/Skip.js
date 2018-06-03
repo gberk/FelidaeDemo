@@ -4,7 +4,7 @@ const states = require('../states')
 
 var SkipMiddleware = function(Context){
     return new Promise((resolve, reject) => {
-        if(Context.intentName != "Skip") resolve();
+        if(Context.intentName != "IDK") resolve();
 
         else {
             StateManager.getState(Context)
