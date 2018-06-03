@@ -2,7 +2,7 @@ var StateProvider = require("../DataStores/StateProvider")
 
 const stateForTimeFollowUp = "gettingTimeOfSighting"
 const stateForLocationFollowUp = "gettingLocation"
-var script = require('./script')
+var Script = require('./script')
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
 

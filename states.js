@@ -18,7 +18,7 @@ var States = {
         skipTo: "RequestDayOfSighting"
     },
     'gettingDayOfSighting': {
-        activeIntents: ["Welcome", "IDK", "Fallback"],
+        activeIntents: ["Welcome", "IDK", "Fallback", "DateTimeOfSighting"],
         middleware: ["Skip", "Fallback"],
         skipTo: "Summary"
     },
@@ -29,7 +29,7 @@ var States = {
         negative: "RequestLocation",
     },
     'gettingLocation': {
-        activeIntents: ["Welcome","RecordLocation", "IDK", "Fallback"],
+        activeIntents: ["Welcome","RecordLocation", "IDK", "Fallback", "GrabLocation"],
         middleware: ["Skip", "Fallback"],
         skipTo: "Summary"
     }
