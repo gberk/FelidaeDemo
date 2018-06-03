@@ -1,6 +1,6 @@
 var Script = {}
 
-Script.WELCOME = "Welcome to Felidae Fund's puma sightings report tool. Is this concerning immediate public safety?"
+Script.WELCOME = "Is this concerning immediate public safety?"
 Script.CURRENT_SIGHTING = "Did this sighting just occur?";
 Script.REQUEST_ADDRESS = "Can you tell me an address nearest to where you sighted the puma?";
 Script.REQUEST_LOCATION_PERMISSION = "I'll need your location in order to report this sighting. To grab your current location,"

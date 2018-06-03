@@ -1,10 +1,14 @@
 // Ayva State manager
-var StateManager = require('../DataStores/StateProvider')
+var UserStore = require('../DataStores/UserStore')
 
 var InactiveIntentErrorHandler = function(Context){
     console.log("Intent matched: " + Context.intentName)
-    StateManager.getState(Context).then(function(state) {
-        Context.assistant.say("This command is currently not available.").finish()
+    UserStore.get(Context).then(function(data) {
+        Context.assistant
+        .say("Sorry, I didn't get that. ")
+        .pause('400ms')
+        .say(data.previousMessage)
+        .finish()
     })
 }
 

@@ -11,4 +11,5 @@ Intents.GrabLocation = require('./Summary')
 Intents.DateTimeOfSighting = require('./RecordDayOfSighting')
 Intents.Summary = require("./Summary")
 Intents.Fallback = require("./Fallback")
+
 module.exports = Intents;
