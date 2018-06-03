@@ -1,34 +1,36 @@
 var States = {
     'default': {
         activeIntents: ['Welcome'],
-        middleware: []
     },
     'gettingPublicSafetyResponse': {
-        activeIntents: ["Welcome","Affirmative","Negative"],
-        middleware: ["RespondToYesNo"],
+        activeIntents: ["Welcome","Affirmative","Negative","RequestLocation", "RequestPastOrPresentSighting","Skip"],
+        middleware: ["RespondToYesNo", "Skip"],
         affirmative: "RequestLocation",
-        negative: "RequestPastOrPresentSighting"
+        negative: "RequestPastOrPresentSighting",
+        skipTo: "RequestPastOrPresentSighting"
     },
     'gettingPresentSighting': {
-        activeIntents: ["Welcome","Affirmative","Negative","Earlier"],
-        middleware: ["RespondToYesNo"],
+        activeIntents: ["Welcome","Affirmative","Negative","Earlier","RequestDayOfSighting","RequestLocation", "Skip"],
+        middleware: ["RespondToYesNo", "Skip"],
         affirmative: "RequestLocation",
-        negative: "RequestDayOfSighting"
+        negative: "RequestDayOfSighting",
+        skipTo: "RequestDayOfSighting"
     },
     'gettingDayOfSighting': {
-        middleware: [],
-        activeIntents: ["Welcome", "DateTimeOfSighting"]
+        activeIntents: ["Welcome", "Skip"],
+        middleware: ["Skip"],
+        skipTo: "Summary"
     },
     'gettingGPSLocation': {
-        activeIntents: ["Welcome","permission_fulfillment"],
-        middleware: []
-    },
-    'gettingTimeOfSighting': {
-        activeIntents: ["Welcome", "DateTimeOfSighting"]
+        activeIntents: ["Welcome","permission_fulfillment","RequestLocation"],
+        middleware: ["RespondToYesNo"],
+        affirmative: "permission_fulfillment",
+        negative: "RequestLocation",
     },
     'gettingLocation': {
-        activeIntents: ["Welcome","GrabLocation"],
-        middleware: []
+        activeIntents: ["Welcome","RecordLocation", "Skip"],
+        middleware: ["Skip"],
+        skipTo: "Summary"
     }
 }
 
