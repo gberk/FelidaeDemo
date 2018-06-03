@@ -4,7 +4,12 @@ var DateTimeOfSighting = {
         "This was {'dateOfSighting': 'yesterday'}",
         "This happened {'dateOfSighting': 'two days ago'}",
         "It was {'dateOfSighting': 'last week'}",
-        "{'dateOfSighting': 'yesterday'}"
+        "{'dateOfSighting': 'yesterday'}",
+        "I think it was around {'dateOfSighting': 'yesterday'}",
+        "I think around {'dateOfSighting': 'yesterday'}",
+        "around {'dateOfSighting': 'yesterday'}",
+        "maybe around {'dateOfSighting': 'yesterday'}",
+        "sometime around {'dateOfSighting': 'yesterday'}"
     ],
     slots: {
         "dateOfSighting": {
