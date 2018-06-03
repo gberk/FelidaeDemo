@@ -1,22 +1,22 @@
 var StateProvider = require('../DataStores/StateProvider')
-
+var Script = require('./script')
 var RequestLocation = function(Context){
     // if not mobile OR in the past
     // Move to state gettingVoiceLocation
     // OR recording for past
     if(!Context.deviceProfile.isMobile())  {
         StateProvider.setState(Context, "gettingLocation")
+        UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
         Context.assistant
-            .say("Can you tell me an address " 
-            + "nearest to where you sighted the puma?" 
-        )
+            .say(Script.REQUEST_ADDRESS)
             .finish()
     } else {
         //Ask to grab location
         //Move state to gettingGPSLocation
         StateProvider.setState(Context, "gettingGPSLocation")
+        UserStore.set(Context, {previousMessage: Script.REQUEST_LOCATION_PERMISSION})
         Context.assistant
-            .location("I'll need your location in order to report this sighting. To grab your current location,")
+            .location(Script.REQUEST_LOCATION_PERMISSION)
             .finish()    
     }
 }

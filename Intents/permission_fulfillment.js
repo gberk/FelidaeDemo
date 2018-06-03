@@ -8,7 +8,7 @@ const StateProvider = require('../DataStores/StateProvider')
 var felidaeFundTeam = [process.env.RFLABS_NUMBER]
 // SMS message
 var smsBody = "This is a sightings alert!"
-
+var Script = require('./script')
 var permission_fulfillment = function(Context){
 
     // Twilio messaging service
@@ -38,10 +38,9 @@ var permission_fulfillment = function(Context){
             .finish({"exit":true});
     } else {
         StateProvider.setState(Context, "gettingLocation")
+        UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
         Context.assistant
-            .say("Can you tell me an address " 
-                + "nearest to where you sighted the puma?" 
-            )
+            .say(Script.REQUEST_ADDRESS)
             .finish();
     }
 }

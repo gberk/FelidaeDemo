@@ -1,10 +1,11 @@
 var StateProvider = require('../DataStores/StateProvider')
-
+var Script = require('./script')
 var WelcomeAlt = function(Context){
     StateProvider.setState(Context, "gettingPublicSafetyResponse")
+    UserStore.set(Context, {previousMessage: Script.WELCOME})
 
     Context.assistant
-        .say("Welcome to Felidae Fund's puma sightings report tool. Is this concerning immediate public safety?")
+        .say(Script.WELCOME)
         .finish()
 }
 

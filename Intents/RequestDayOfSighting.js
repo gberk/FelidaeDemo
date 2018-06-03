@@ -2,8 +2,9 @@ var StateProvider = require("../DataStores/StateProvider")
 
 var RequestDayOfSighting = function(Context){
     StateProvider.setState(Context,"gettingDayOfSighting")
+    UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
     Context.assistant
-        .say("Can you tell me which day and time you sighted the puma?")
+        .say(REQUEST_DATETIME_OF_SIGHTING)
         .finish()
 }
 

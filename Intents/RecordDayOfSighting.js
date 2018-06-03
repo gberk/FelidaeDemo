@@ -2,7 +2,7 @@ var StateProvider = require("../DataStores/StateProvider")
 
 const stateForTimeFollowUp = "gettingTimeOfSighting"
 const stateForLocationFollowUp = "gettingLocation"
-
+var script = require('./script')
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
 
@@ -25,14 +25,14 @@ var RecordDayOfSighting = function(Context){
             if(!timeMatch)
             {
                 Context.assistant
-                .say("I didn't get that. Around what time of day did you sight the puma? " +
-                     "If you don't remember, you can say I don't remember")
+                .say("I didn't get that. ")
+                .say(REPEAT_TIME_OF_SIGHTING)
                 .finish()
             } else {
                 StateProvider.setState(Context, stateForLocationFollowUp)
+                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
                 Context.assistant
-                    .say("Got it. Can you tell me an address " 
-                    + "nearest to where you saw the puma?")
+                    .say(Script.REQUEST_ADDRESS)
                     .finish()
             }
         } else {
@@ -40,9 +40,10 @@ var RecordDayOfSighting = function(Context){
             //CASE: No date or time provided
             if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
             {
+                UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
                 Context.assistant
-                    .say("I didn't get that. Around what time did you sight the puma? " +
-                         "If you don't remember, you can just say I don't remember")
+                    .say("I didn't get that. ")
+                    .say(Script.REPEAT_TIME_OF_SIGHTING)
                     .finish()
             }
     
@@ -50,8 +51,10 @@ var RecordDayOfSighting = function(Context){
             else if(dateMatch && !timeMatch)
             {
                 StateProvider.setState(Context, stateForTimeFollowUp)
+                UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
                 Context.assistant
-                    .say("Thanks. Around what time of day did you sight the puma?")
+                    .say("Thanks")
+                    .say(Script.REQUEST_TIME_OF_SIGHTING) 
                     .finish()
             }
     
@@ -59,9 +62,10 @@ var RecordDayOfSighting = function(Context){
             else //Is this enough?
             {
                 StateProvider.setState(Context, stateForLocationFollowUp)
+                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
                 Context.assistant
-                    .say("Got it. Can you tell me an address " 
-                    + "nearest to where you saw the puma?")
+                    .say("Got it. ")
+                    .say(Script.REQUEST_ADDRESS) 
                     .finish()
             }
         }

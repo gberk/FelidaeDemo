@@ -1,9 +1,11 @@
 var StateProvider = require('../DataStores/StateProvider')
-
+var Script = require('./script')
 var RequestPastOrPresentSighting = function(Context){
     StateProvider.setState(Context, "gettingPresentSighting")
+    UserStore.set(Context, {previousMessage: Script.CURRENT_SIGHTING})
     Context.assistant
-        .say("Good to hear you are safe. Did this sighting just occur?")
+        .say("I'm glad you're safe. ")
+        .say(Script.CURRENT_SIGHTING)
         .finish()
 }
 
