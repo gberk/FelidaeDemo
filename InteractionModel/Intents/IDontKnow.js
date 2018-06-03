@@ -8,7 +8,7 @@ var IDK = {
         "idk",
         "don\'t know",
         "I am not sure", 
-        "IDK"
+        "Skip"
     ]
 }
 
