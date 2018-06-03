@@ -5,8 +5,7 @@ const Negative = {
         "Nope",
         "Nah",
         "Negative",
-        "It did not",
-        "It didn't"
+        "It did not"
     ]
 }
 

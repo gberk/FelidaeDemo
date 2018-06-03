@@ -8,7 +8,7 @@ var DateTimeOfSighting = {
     ],
     slots: {
         "dateOfSighting": {
-            dataType: ["@sys.date-time", "AMAZON.date"],
+            dataType: ["@sys.date-time", "AMAZON.DATE"],
             isList: false,
             required: false
         }
