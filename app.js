@@ -38,6 +38,10 @@ app.get('/privacyPolicy', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/privacyPolicy.html'))
 })
 
+app.get('/notification', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/notification.html'))
+})
+
 server.listen(process.env.PORT || 8080, function() {
 	console.log("Node server started")
 });

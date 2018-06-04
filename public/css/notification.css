@@ -1,0 +1,52 @@
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+}
+
+hr {
+    width: 100%;
+    font-size: 1px;
+    border: none;
+    border-top: 1px solid #EBEBEB;
+}
+
+.notificationContainer {
+    display: flex;
+    width:40%;
+    padding-top: 2em;
+    flex-direction: column;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.emailRequest {
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    padding: 3em 0 3em 0;
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+    background-color: #F47521;
+    border: 0;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background: #F47521;
+}
+
+.felidaeLogo {
+    width: 40vw;
+}
