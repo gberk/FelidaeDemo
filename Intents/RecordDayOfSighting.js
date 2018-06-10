@@ -53,7 +53,7 @@ var RecordDayOfSighting = function(Context){
                 StateProvider.setState(Context, stateForTimeFollowUp)
                 UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
                 Context.assistant
-                    .say("Thanks")
+                    .say("Thanks. ")
                     .say(Script.REQUEST_TIME_OF_SIGHTING) 
                     .finish()
             }

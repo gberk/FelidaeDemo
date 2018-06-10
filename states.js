@@ -22,6 +22,11 @@ var States = {
         middleware: ["Skip", "Fallback"],
         skipTo: "Summary"
     },
+    'gettingTimeOfSighting': {
+        activeIntents: ["Welcome", "IDK", "Fallback", "DateTimeOfSighting"],
+        middleware: ["Skip", "Fallback"],
+        skipTo: "Summary"
+    },
     'gettingGPSLocation': {
         activeIntents: ["Welcome","permission_fulfillment","RequestLocation", "Fallback"],
         middleware: ["RespondToYesNo", "Fallback"],
