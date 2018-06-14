@@ -7,7 +7,10 @@ UserStore = function(){
             }) 
         },
         set: (Context, data) => {
-            userStore[Context.deviceProfile.id] = data
+            Object.assign(userStore[Context.deviceProfile.id] || {}, data)
+        },
+        reset: (Context) => {
+            userStore[Context.deviceProfile.id] = {}
         }
     }
 }()

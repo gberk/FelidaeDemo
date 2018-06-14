@@ -16,6 +16,12 @@ var Errors = require('./Errors')
 var StateProvider = require('./DataStores/StateProvider')
 var Middleware = require('./Middleware')
 
+//Set up db connection
+var mongoose = require('mongoose')
+mongoose.Promise = Promise;
+
+mongoose.connect(process.env.REPORT_DATABASE, (err) => {if (err) console.log("Mongoose error: " + err)});
+
 // var Ayva = require('ayva')
 var Ayva = require('ayva')
 

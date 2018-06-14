@@ -62,7 +62,8 @@ var RecordDayOfSighting = function(Context){
             else //Is this enough?
             {
                 StateProvider.setState(Context, stateForLocationFollowUp)
-                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
+                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS, })
+
                 Context.assistant
                     .say("Got it. ")
                     .say(Script.REQUEST_ADDRESS) 
