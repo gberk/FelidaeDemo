@@ -4,7 +4,9 @@ var RequestLocation = function(Context){
     // if not mobile OR in the past
     // Move to state gettingVoiceLocation
     // OR recording for past
+
     if(!Context.deviceProfile.isMobile())  {
+        if(!Context.report.dateOfSighting && !Context.report.timeOfSighting)
         StateProvider.setState(Context, "gettingLocation")
         UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
         Context.assistant

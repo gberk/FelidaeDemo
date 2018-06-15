@@ -6,7 +6,6 @@ var reportSchema = new mongoose.Schema(
     isTest: {type:Boolean, default: true},
     dateOfSighting: String,
     timeOfSighting: String,
-    timestampSighting: Date,
     latlonOfSighting: String,
     addressOfSighting: String
     
