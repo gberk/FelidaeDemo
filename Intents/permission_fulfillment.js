@@ -26,10 +26,9 @@ var permission_fulfillment = function(Context){
         })
     }
     
+    Context.report.timestampSighting = Date.now();
     if (Context.location) {
-        console.log(Context.report)
         Context.report.latlonOfSighting = JSON.stringify(Context.location.coordinates)
-        Context.report.save()
         Context.assistant
             .say(Script.SIGHTING_REPORTED)
             .finish({"exit":true});
@@ -40,6 +39,7 @@ var permission_fulfillment = function(Context){
             .say(Script.REQUEST_ADDRESS)
             .finish();
     }
+    Context.report.save()    
 }
 
 module.exports = permission_fulfillment;
