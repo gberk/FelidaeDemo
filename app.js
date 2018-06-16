@@ -24,7 +24,6 @@ mongoose.Promise = Promise;
 
 mongoose.connect(process.env.MONGODB_URI, (err) => {if (err) console.log("Mongoose error: " + err)});
 
-// var Ayva = require('ayva')
 var Ayva = require('ayva')
 
 //Ayva Config
