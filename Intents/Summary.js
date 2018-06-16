@@ -17,7 +17,7 @@ var Summary = function(Context){
     UserStore.set(Context, {previousMessage: Script.SIGHTING_REPORTED})
     Context.assistant
         .say(Script.SIGHTING_REPORTED)
-        .finish({"exit":true});
+        .finish();
 }
 
 module.exports = Summary;
