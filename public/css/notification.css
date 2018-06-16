@@ -93,6 +93,20 @@ hr {
     padding-left: 1em;
 }
 
+.results {
+    display: flex;
+    justify-content: center;
+    padding: 1em 0 1em 0;
+}
+
+.success {
+    color: #459CF7;
+}
+
+.failure {
+    color: #FF4C6A;
+}
+
 @media only screen and (max-width: 768px) {
 
     .main {
@@ -188,5 +202,21 @@ hr {
         width: 50%;
         justify-content: flex-start;
         padding-left: 1em;
+    }
+
+    .results {
+        display: flex;
+        justify-content: center;
+        padding: 1em 0 1em 0;
+        text-align: center;
+        font-size: .9em;
+    }
+
+    .success {
+        color: #459CF7;
+    }
+
+    .failure {
+        color: #FF4C6A;
     }
 }
