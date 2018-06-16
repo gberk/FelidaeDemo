@@ -15,12 +15,12 @@ var CompleteFeedback = function(Context){
     if (Context.deviceProfile.platform === "alexa") {
         platform = "Alexa"
     }
-    let feedback = platform + " || " + isMobile + " || user: " + Context.args.feedback;
+    let feedback = platform + " - " + isMobile + " || " + Context.args.feedback;
     axios({
         method: 'post',
         headers:{"Content-type":"application/json"},
         data: {text: feedback},
-        url: process.env.FEEDBACK_RIVER_URL
+        url: process.env.FEEDBACK_RIVER_APP
     }).then((response) => {
         console.log("Feedback sent to Slack successfully.")
     }).catch((error) => {

@@ -1,0 +1,193 @@
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+}
+
+hr {
+    width: 100%;
+    font-size: 1px;
+    border: none;
+    border-top: 1px solid #EBEBEB;
+}
+
+.notificationContainer {
+    display: flex;
+    width:40%;
+    padding-top: 2em;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.notFound {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: center;
+    align-content: center;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.message span {
+    font-size: 3em;
+}
+
+.felidaeLogo {
+    width: 40vw;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.row-links {
+    display:flex;
+}
+
+.row-links a {
+    color: black;
+    font-size: .8em;
+}
+
+.column-1-links {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    padding-right: 1em;
+}
+
+.column-2-links {
+    display: flex;
+    width: 50%;
+    justify-content: flex-start;
+    padding-left: 1em;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    padding: 0em 0 .5em 0;
+    text-align: center;
+    font-size: .9em;
+}
+
+.success {
+    color: #459CF7;
+}
+
+.failure {
+    color: #FF4C6A;
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-family: 'Lato', sans-serif;
+    }
+    
+    hr {
+        width: 100%;
+        font-size: 1px;
+        border: none;
+        border-top: 1px solid #EBEBEB;
+    }
+    
+    .notificationContainer {
+        display: flex;
+        width:90%;
+        padding-top: 2em;
+        height: 100vh;
+        flex-direction: column;
+    }
+    
+    .navigation {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .notFound {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    .message {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .message span {
+        font-size: 2em;
+    }
+    
+    .felidaeLogo {
+        width: 90vw;
+    }
+    
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 1em;
+    }
+    
+    .row-links {
+        display:flex;
+    }
+    
+    .row-links a {
+        color: black;
+        font-size: .8em;
+    }
+    
+    .column-1-links {
+        display: flex;
+        width: 50%;
+        justify-content: flex-end;
+        padding-right: 1em;
+    }
+    
+    .column-2-links {
+        display: flex;
+        width: 50%;
+        justify-content: flex-start;
+        padding-left: 1em;
+    }
+    
+    .results {
+        display: flex;
+        justify-content: center;
+        padding: 0em 0 .5em 0;
+        text-align: center;
+        font-size: .9em;
+    }
+    
+    .success {
+        color: #459CF7;
+    }
+    
+    .failure {
+        color: #FF4C6A;
+    }
+}

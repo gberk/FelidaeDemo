@@ -49,8 +49,15 @@ app.get('/notification', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/notification.html'))
 })
 
+app.get('/feedback', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/feedback.html'))
+})
+
+app.get('/notFound', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/notFound.html'))
+})
+
 app.post('/sendEmail', function (req, res) {
-    
     let email = req.body.emailAddress
     let sendGridAuth = "Bearer " + process.env.SENDGRID_API_KEY
     let sendGridRequest = {
@@ -86,6 +93,26 @@ app.post('/sendEmail', function (req, res) {
         }
         res.send(result)
     }).catch((error) => {
+        res.send(error)
+    })
+})
+
+app.post('/webformFeedback', function(req, res) {
+    let feedback = req.body.feedback;
+    axios({
+        method: 'post',
+        headers:{"Content-type":"application/json"},
+        data: {text: feedback},
+        url: process.env.FEEDBACK_RIVER_WEBFORM
+    }).then((response) => {
+        console.log("Feedback sent to Slack successfully.")
+        let result = {
+            status: response.status,
+            statusText: response.statusText
+        }
+        res.send(result)
+    }).catch((error) => {
+        console.log("Feedback error: " + error)
         res.send(error)
     })
 })

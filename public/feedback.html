@@ -3,9 +3,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/notification.css">
+        <link rel="stylesheet" type="text/css" href="/css/feedback.css">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-        <title>Connect with Felidae Fund</title>
+        <title>Wildcat Feedback</title>
     </head>
     <body>
         <div class="main">
@@ -14,19 +14,22 @@
                     <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
                 </div>
                 <hr>
-                <div class="emailRequest">
+                <div class="feedbackRequest">
                     <div class="instructions">
-                        <span>Please provide us with your email address if you'd like a member of the Felidae Fund to follow-up on your sightings report</span>
+                        <span>Suggestions, questions, or bugs? We'd love to hear from you!</span>
                     </div>
-                    <div class="results">
-                    </div>
-                    <div class="emailForm">
+                    <div class="feedbackForm">
                         <div class="inputContainer">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email (optional)"></input>
                         </div>
-                        
-                        <button type="submit" onclick="sendEmail()" class="btn btn-primary">Submit email</button>
+                        <div class="results">
+                        </div>
+                        <div class="inputContainer">
+                            <textarea type="text" class="form-control" id="inputFeedback" placeholder="Tell us your feedback..." rows="7" ></textarea>
+                        </div>
+                        <button type="submit" onclick="sendFeedback()" class="btn btn-primary">Submit feedback</button>
                     </div>
+                    
                 </div>
                 <div class="footer">
                     <div class="row-links">
@@ -42,24 +45,36 @@
         </div>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript">
-            function sendEmail() {
-                let sendEmailRequest = {
-                    emailAddress: document.getElementById("inputEmail").value
-                }
-                if (sendEmailRequest.emailAddress === "") {
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter a valid email address</span>"
+            function sendFeedback() {
+                let message
+                let feedback = document.getElementById("inputFeedback").value
+                let email = document.getElementById("inputEmail").value
+
+                if (feedback === "") {
+                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter feedback before submitting</span>"
                     return;
                 }
+
+                if (email != "") {
+                    message = {
+                        feedback: email + " || " + feedback
+                    }
+                } else {
+                    message = {
+                        feedback: "anonymous || " + feedback
+                    }
+                }
+
                 axios({
                     method: 'post',
-                    url: '/sendEmail',
-                    data: sendEmailRequest
+                    url: '/webformFeedback',
+                    data: message
                 }).then((response) => {
                     let result = {
                         status: response.status,
                         statusText: response.statusText
                     }
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you. A Felidae Fund member will be in touch shorty.</span>"
+                    document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you for the feedback!</span>"
                     console.log(result)
                 }).catch((error) => {
                     document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
