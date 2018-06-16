@@ -3,12 +3,9 @@ var Script = require('./script')
 
 const axios = require('axios')
 
-var CompleteFeedback = function(Context){
-    console.log(Context.deviceProfile)
-    
+var CompleteFeedback = function(Context){    
     let platform = "Unknown"
     let isMobile = "Speaker"
-
     if (Context.deviceProfile.isMobile()) {
         isMobile = "Mobile"
     }
@@ -18,9 +15,7 @@ var CompleteFeedback = function(Context){
     if (Context.deviceProfile.platform === "alexa") {
         platform = "Alexa"
     }
-
-    let feedback = platform + " // " + isMobile + " // Message: " + Context.args.feedback;
-
+    let feedback = platform + " || " + isMobile + " || user: " + Context.args.feedback;
     axios({
         method: 'post',
         headers:{"Content-type":"application/json"},
@@ -31,7 +26,6 @@ var CompleteFeedback = function(Context){
     }).catch((error) => {
         console.log("Feedback error: " + error)
     })
-
     Context.assistant
         .say("Thank you. Your feedback has been sent to the team.")
         .finish({"exit":true});
