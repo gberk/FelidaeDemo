@@ -10,6 +10,10 @@ Intents.RequestDayOfSighting = require('./RequestDayOfSighting')
 Intents.GrabLocation = require('./Summary')
 Intents.DateTimeOfSighting = require('./RecordDayOfSighting')
 Intents.Summary = require("./Summary")
+
 Intents.Fallback = require("./Fallback")
+
+Intents.EnableTest = require("./EnableTest")
+Intents.EnableProd = require("./EnableProd")
 
 module.exports = Intents;

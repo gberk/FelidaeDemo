@@ -12,6 +12,7 @@ var Welcome = function(Context){
     Context.assistant
         .say("Welcome to Felidae Fund's puma sightings report tool. ")
         .say(Script.WELCOME)
+        .reprompt.say(Script.WELCOME)
         .finish()
 }
 

@@ -5,6 +5,7 @@ var RequestDayOfSighting = function(Context){
     UserStore.set(Context, {previousMessage: Script.REQUEST_DATETIME_OF_SIGHTING})
     Context.assistant
         .say(Script.REQUEST_DATETIME_OF_SIGHTING)
+        .reprompt.say(Script.REQUEST_DATETIME_OF_SIGHTING)
         .finish()
 }
 

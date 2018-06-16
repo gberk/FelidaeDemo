@@ -7,6 +7,7 @@ var RequestPastOrPresentSighting = function(Context){
     Context.assistant
         .say("I'm glad you're safe. ")
         .say(Script.CURRENT_SIGHTING)
+        .reprompt.say(Script.CURRENT_SIGHTING)
         .finish()
 }
 
