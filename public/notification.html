@@ -4,7 +4,7 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="/css/notification.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato,400,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
         <title>Felidea Email Notifications</title>
     </head>
     <body>
@@ -18,17 +18,54 @@
                     <div class="instructions">
                         <span>Please provide us with your email address if you'd like a member of the Felidae Fund to follow-up on your sightings report</span>
                     </div>
+                    <div class="results">
+                    </div>
                     <div class="emailForm">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
-                        <br/>
+                        <div class="inputContainer">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
+                        </div>
+                        
                         <button type="submit" onclick="sendEmail()" class="btn btn-primary">Submit email</button>
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="row-links">
+                        <div class="column-1-links">
+                            <a href=""><span>Privacy Policy</span></a>
+                        </div>
+                        <div class="column-2-links">
+                            <a href=""><span>Terms of Use</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript">
             function sendEmail() {
-                console.log('hit')
+                let sendEmailRequest = {
+                    emailAddress: document.getElementById("inputEmail").value
+                }
+                if (sendEmailRequest.emailAddress === "") {
+                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter a valid email address</span>"
+                    return;
+                }
+                axios({
+                    method: 'post',
+                    url: '/sendEmail',
+                    data: sendEmailRequest
+                }).then((response) => {
+                    let result = {
+                        status: response.status,
+                        statusText: response.statusText
+                    }
+                    document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you. A Felidae Fund member will be in touch shorty.</span>"
+                    console.log(result)
+                }).catch((error) => {
+                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
+                    console.log(error)
+                })
             }
         </script>
     </body>
