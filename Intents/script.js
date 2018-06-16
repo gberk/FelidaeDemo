@@ -17,9 +17,12 @@ Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you sight the puma
 Script.REQUEST_TIME_OF_SIGHTING = "Around what time of day did you sight the puma?"
 
 Script.SIGHTING_REPORTED = "Thank you. " 
-                        + "Your report number is 1234. " 
-                        + "If you would like to speak to Felidae Fund, "
-                        + "please email us at info@felidaefund.org or call us at 415-354-5655. "
-                        + "Good bye!"
+                        + "Would you like to send this report to the Felidae team?" 
+                        
+
+Script.REPORT_SUBMITTED = "Your report has been submitted. "
+                            + "If you would like a member of the Felidae Fund to follow up with you, "
+                            + "please visit https://felidaefund.org/sightings/2356"
+                            + "Thank you!"
 
 module.exports = Script

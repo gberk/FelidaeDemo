@@ -1,5 +1,5 @@
 var SubmitReport = function(Context){
-    Context.report.isTest = true
+    Context.report.isTest = false;
 
     Context.assistant
     .say("Your report has been submitted. Thank you")
