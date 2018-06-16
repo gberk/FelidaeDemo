@@ -18,7 +18,7 @@ var SubmitReport = function(Context){
                 {
                   "title": "Refresh Labs",
                   "openUrlAction": {
-                    "url": "https://www.refreshlabs.co/"
+                    "url":  process.env.WEBSITE_BASEURL + "/notification?report="+ Context.report.url 
                   }
                 }
               ]

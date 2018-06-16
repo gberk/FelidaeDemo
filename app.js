@@ -45,7 +45,7 @@ app.get('/privacyPolicy', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/privacyPolicy.html'))
 })
 
-app.get('/notification', function(req, res) {
+app.get('/notification/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/notification.html'))
 })
 
@@ -53,48 +53,90 @@ app.get('/feedback', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/feedback.html'))
 })
 
+
 app.get('/notFound', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/notFound.html'))
 })
 
-app.post('/sendEmail', function (req, res) {
-    let email = req.body.emailAddress
-    let sendGridAuth = "Bearer " + process.env.SENDGRID_API_KEY
-    let sendGridRequest = {
-        "personalizations": [{
-            "to": [{
-                "email": email
-            }],
-            "subject": "Hello, World!"
-        }],
-        "from": {
-            "email": "founders@example.com"
-        },
-        "content": [{
-            "type": "text/plain",
-            "value": "Hello, World!"
-        }]
-    }
+var Reports = require('./DataStores/Reports')
 
-    // save email address to db
+var recordEmailForReport = function(reportId, email){
+    return new Promise((resolve, reject) => {
+        Reports.find({url:reportId})
+            .then((report) => {
 
-    // send email to felidae team
-    axios({
-        method:'post',
-        headers: {
-            Authorization: sendGridAuth
-        },
-        url: 'https://api.sendgrid.com/v3/mail/send',
-        data: sendGridRequest
-    }).then((response) => {
-        let result = {
-            status: response.status,
-            statusText: response.statusText
-        }
-        res.send(result)
-    }).catch((error) => {
-        res.send(error)
+                if(!report[0])
+                {
+                    reject ("Report not found")
+                }
+                else if(report[0].email && report[0].email.length() > 0) 
+                {
+                    reject("An email address has already been submitted for that report")
+                }
+                else{
+                    report[0].email = email;
+                    report[0].url = null;
+                    report[0].save()
+                    resolve(report[0])
+                }
+            })
+            .catch((err) => {
+                reject (err)
+            })
     })
+   
+}
+
+app.post('/submitEmail', function (req, res) {
+    let email = req.body.emailAddress
+    let reportId = req.body.reportId
+
+        // save email address to db
+        recordEmailForReport(reportId, email)
+        .then((report) => {
+            if(report)
+            {
+                let sendGridAuth = "Bearer " + process.env.SENDGRID_API_KEY
+                let sendGridRequest = {
+                    "personalizations": [{
+                        "to": [{
+                            "email": email
+                        }],
+                        "subject": "Hello, World!"
+                    }],
+                    "from": {
+                        "email": "wildcat@refreshlabs.co"
+                    },
+                    "content": [{
+                        "type": "text/plain",
+                        "value": "Hello, World!"
+                    }]
+                }
+            
+            
+            
+                // send email to felidae team
+                axios({
+                    method:'post',
+                    headers: {
+                        Authorization: sendGridAuth
+                    },
+                    url: 'https://api.sendgrid.com/v3/mail/send',
+                    data: sendGridRequest
+                }).then((response) => {
+                    let result = {
+                        status: response.status,
+                        statusText: response.statusText
+                    }
+                    res.send(result)
+                }).catch((error) => {
+                    res.send(error)
+                })
+            }
+        })
+        .catch((err) => {
+            res.send(err)
+        })
 })
 
 app.post('/webformFeedback', function(req, res) {

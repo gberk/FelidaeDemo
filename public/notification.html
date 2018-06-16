@@ -42,9 +42,20 @@
         </div>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript">
+            function getUrlParams(prop) {
+                var params = {};
+                var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+                var definitions = search.split('&');
+                definitions.forEach( function(val, key) {
+                    var parts = val.split('=', 2);
+                    params[parts[0]] = parts[1];
+                } );
+                return(prop && prop in params) ? params[prop] : params;
+            }
             function sendEmail() {
                 let sendEmailRequest = {
-                    emailAddress: document.getElementById("inputEmail").value
+                    emailAddress: document.getElementById("inputEmail").value,
+                    reportId: getUrlParams("report")
                 }
                 if (sendEmailRequest.emailAddress === "") {
                     document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter a valid email address</span>"
@@ -52,7 +63,7 @@
                 }
                 axios({
                     method: 'post',
-                    url: '/sendEmail',
+                    url: '/submitEmail',
                     data: sendEmailRequest
                 }).then((response) => {
                     let result = {
