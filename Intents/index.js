@@ -12,6 +12,7 @@ Intents.DateTimeOfSighting = require('./RecordDayOfSighting')
 Intents.Summary = require("./Summary")
 
 Intents.Fallback = require("./Fallback")
+Intents.Repeat = require('./Fallback')
 
 Intents.EnableTest = require("./EnableTest")
 Intents.EnableProd = require("./EnableProd")

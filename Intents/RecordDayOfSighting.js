@@ -11,7 +11,7 @@ var RecordDayOfSighting = function(Context){
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
-
+    console.log(dateMatch, timeMatch)
     //DATE PREPROCESSING
     //Is the date in the future? Rewind to this year
     // if(dateMatch && (new Date(dateMatch) > Date.now()))
@@ -32,6 +32,8 @@ var RecordDayOfSighting = function(Context){
             } else {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
+                Context.report.timeOfSighting = timeMatch;
+                Context.report.save()
                 Context.assistant
                     .say(Script.REQUEST_ADDRESS)
                     .reprompt.say(Script.REQUEST_ADDRESS)
@@ -55,6 +57,8 @@ var RecordDayOfSighting = function(Context){
             {
                 StateProvider.setState(Context, stateForTimeFollowUp)
                 UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
+                Context.report.dateOfSighting = dateMatch;
+                Context.report.save();
                 Context.assistant
                     .say("Thanks. ")
                     .say(Script.REQUEST_TIME_OF_SIGHTING)
@@ -66,7 +70,10 @@ var RecordDayOfSighting = function(Context){
             else //Is this enough?
             {
                 StateProvider.setState(Context, stateForLocationFollowUp)
-                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS, })
+                Context.report.dateOfSighting = dateMatch;
+                Context.report.timeOfSighting = timeMatch;
+                Context.report.save()
+                UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS })
 
                 Context.assistant
                     .say("Got it. ")
