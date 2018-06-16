@@ -26,7 +26,6 @@ var permission_fulfillment = function(Context){
         })
     }
     
-    Context.report.timestampSighting = Date.now();
     if (Context.location) {
         Context.report.latlonOfSighting = JSON.stringify(Context.location.coordinates)
         Context.assistant

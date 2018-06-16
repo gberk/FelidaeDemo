@@ -20,7 +20,7 @@ var Middleware = require('./Middleware')
 var mongoose = require('mongoose')
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.REPORT_DATABASE, (err) => {if (err) console.log("Mongoose error: " + err)});
+mongoose.connect(process.env.MONGODB_URI, (err) => {if (err) console.log("Mongoose error: " + err)});
 
 // var Ayva = require('ayva')
 var Ayva = require('ayva')
