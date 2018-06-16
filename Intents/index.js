@@ -17,4 +17,7 @@ Intents.Repeat = require('./Fallback')
 Intents.EnableTest = require("./EnableTest")
 Intents.EnableProd = require("./EnableProd")
 
+Intents.SubmitReport = require('./SubmitReport')
+Intents.DoNotSubmit = require('./DoNotSubmit')
+
 module.exports = Intents;

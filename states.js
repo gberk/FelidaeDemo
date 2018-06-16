@@ -38,6 +38,12 @@ var States = {
         activeIntents: ["Welcome","RecordLocation", "IDK", "Fallback", "GrabLocation", "EnableTest", "EnableProd", "Repeat"],
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
         skipTo: "Summary"
+    },
+    "askingToSubmitReport": {
+        activeIntents: ["Welcome", "IDK","Affirmative","Negative", "Fallback", "EnableTest", "EnableProd", "Repeat"],
+        middleware: ["Fallback", "AttachReport", "Repeat","RespondToYesNo"],
+        affirmative: "SubmitReport",
+        negative: "DoNotSubmit",
     }
 }
 

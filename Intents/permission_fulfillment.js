@@ -28,9 +28,11 @@ var permission_fulfillment = function(Context){
     
     if (Context.location) {
         Context.report.latlonOfSighting = JSON.stringify(Context.location.coordinates)
+        StateProvider.setState(Context, "askingToSubmitReport")
+        UserStore.set(Context, {previousMessage: Script.SIGHTING_REPORTED})
         Context.assistant
             .say(Script.SIGHTING_REPORTED)
-            .finish({"exit":true});
+            .finish();
     } else {
         StateProvider.setState(Context, "gettingLocation")
         UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
