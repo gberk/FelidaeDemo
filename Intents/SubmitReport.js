@@ -1,9 +1,11 @@
+var Script = require('./script')
+
 var SubmitReport = function(Context){
     Context.report.isTest = false;
 
     Context.assistant
-    .say("Your report has been submitted. Thank you")
-    .finish({"exit": true})
+        .say(Script.REPORT_SUBMITTED)
+        .finish({"exit": true})
 
     Context.report.save()
 }

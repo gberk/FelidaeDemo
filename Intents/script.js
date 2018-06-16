@@ -22,7 +22,10 @@ Script.SIGHTING_REPORTED = "Thank you. "
 
 Script.REPORT_SUBMITTED = "Your report has been submitted. "
                             + "If you would like a member of the Felidae Fund to follow up with you, "
-                            + "please visit https://felidaefund.org/sightings/2356"
+                            + "please visit https://felidaefund.org/sightings/2356 "
                             + "Thank you!"
+
+Script.REPORT_NOT_SUBMITTED = "Ok, I have not submitted this report. "
+                            + "Thank you"
 
 module.exports = Script
