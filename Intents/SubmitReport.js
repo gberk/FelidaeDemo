@@ -16,9 +16,9 @@ var SubmitReport = function(Context){
               },
               "buttons": [
                 {
-                  "title": "Refresh",
+                  "title": "Refresh Labs",
                   "openUrlAction": {
-                    "url": "https://refreshlabs.co/"
+                    "url": "https://www.refreshlabs.co/"
                   }
                 }
               ]
