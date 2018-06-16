@@ -27,12 +27,14 @@ var RecordDayOfSighting = function(Context){
                 Context.assistant
                 .say("I didn't get that. ")
                 .say(REPEAT_TIME_OF_SIGHTING)
+                .reprompt.say(REPEAT_TIME_OF_SIGHTING)
                 .finish()
             } else {
                 StateProvider.setState(Context, stateForLocationFollowUp)
                 UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
                 Context.assistant
                     .say(Script.REQUEST_ADDRESS)
+                    .reprompt.say(Script.REQUEST_ADDRESS)
                     .finish()
             }
         } else {
@@ -44,6 +46,7 @@ var RecordDayOfSighting = function(Context){
                 Context.assistant
                     .say("I didn't get that. ")
                     .say(Script.REPEAT_TIME_OF_SIGHTING)
+                    .reprompt.say(Script.REQUEST_TIME_OF_SIGHTING)
                     .finish()
             }
     
@@ -54,7 +57,8 @@ var RecordDayOfSighting = function(Context){
                 UserStore.set(Context, {previousMessage: Script.REQUEST_TIME_OF_SIGHTING})
                 Context.assistant
                     .say("Thanks. ")
-                    .say(Script.REQUEST_TIME_OF_SIGHTING) 
+                    .say(Script.REQUEST_TIME_OF_SIGHTING)
+                    .reprompt.say(Script.REQUEST_TIME_OF_SIGHTING) 
                     .finish()
             }
     
@@ -65,7 +69,8 @@ var RecordDayOfSighting = function(Context){
                 UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
                 Context.assistant
                     .say("Got it. ")
-                    .say(Script.REQUEST_ADDRESS) 
+                    .say(Script.REQUEST_ADDRESS)
+                    .reprompt.say(Script.REQUEST_ADDRESS) 
                     .finish()
             }
         }
