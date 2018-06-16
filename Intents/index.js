@@ -19,5 +19,7 @@ Intents.EnableProd = require("./EnableProd")
 
 Intents.SubmitReport = require('./SubmitReport')
 Intents.DoNotSubmit = require('./DoNotSubmit')
+Intents.StartFeedback = require("./StartFeedback")
+Intents.CaptureFeedback = require("./CompleteFeedback")
 
 module.exports = Intents;
