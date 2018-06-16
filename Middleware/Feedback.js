@@ -7,7 +7,9 @@ var Feedback = function(Context){
             if(currentState != "captureFeedback") resolve();
 
             else {
-                Context.intentName = "CaptureFeedback"
+                if ( Context.intentName != "Welcome") {
+                    Context.intentName = "CaptureFeedback"
+                }
                 resolve()
             }
         })
