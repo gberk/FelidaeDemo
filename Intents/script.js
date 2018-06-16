@@ -18,7 +18,7 @@ Script.REQUEST_TIME_OF_SIGHTING = "Around what time of day did you sight the pum
 
 Script.SIGHTING_REPORTED = "Thank you. " 
                         + "Your report number is 1234. " 
-                        + "If you'd like speak to Felidae Fund, "
+                        + "If you would like to speak to Felidae Fund, "
                         + "please email us at info@felidaefund.org or call us at 415-354-5655. "
                         + "Good bye!"
 
