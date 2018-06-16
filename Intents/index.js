@@ -17,4 +17,7 @@ Intents.Repeat = require('./Fallback')
 Intents.EnableTest = require("./EnableTest")
 Intents.EnableProd = require("./EnableProd")
 
+Intents.StartFeedback = require("./StartFeedback")
+Intents.CaptureFeedback = require("./CompleteFeedback")
+
 module.exports = Intents;
