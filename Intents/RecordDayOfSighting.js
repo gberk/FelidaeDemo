@@ -5,9 +5,12 @@ const stateForLocationFollowUp = "gettingLocation"
 var Script = require('./script')
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
+var ConversationLog = require('../DataStores/ConversationLog')
+
 
 var RecordDayOfSighting = function(Context){
     //This stuff is probably worth putting some log statements around for user testing
+    ConversationLog.log(Context)
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
