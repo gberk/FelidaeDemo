@@ -1,6 +1,7 @@
-var StateProvider = require('../DataStores/StateProvider')
-var Script = require('./script')
-var ConversationLog = require('../DataStores/ConversationLog')
+const StateProvider = require('../DataStores/StateProvider')
+const Script = require('./script')
+const ConversationLog = require('../DataStores/ConversationLog')
+
 var RequestLocation = function(Context){
     // if not mobile OR in the past
     // Move to state gettingVoiceLocation

@@ -1,6 +1,6 @@
-var StateProvider = require("../DataStores/StateProvider")
-var Script = require('./script')
-var ConversationLog = require('../DataStores/ConversationLog')
+const StateProvider = require("../DataStores/StateProvider")
+const Script = require('./script')
+const ConversationLog = require('../DataStores/ConversationLog')
 
 var RequestDayOfSighting = function(Context){
     ConversationLog.log(Context)

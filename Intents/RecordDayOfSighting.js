@@ -1,12 +1,11 @@
 var StateProvider = require("../DataStores/StateProvider")
-
 const stateForTimeFollowUp = "gettingTimeOfSighting"
 const stateForLocationFollowUp = "gettingLocation"
-var Script = require('./script')
+const Script = require('./script')
+const ConversationLog = require('../DataStores/ConversationLog')
+
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
-var ConversationLog = require('../DataStores/ConversationLog')
-
 
 var RecordDayOfSighting = function(Context){
     //This stuff is probably worth putting some log statements around for user testing

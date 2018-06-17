@@ -1,9 +1,9 @@
-var StateProvider = require('../DataStores/StateProvider')
-var Script = require('./script')
-
 const axios = require('axios')
 
+const ConversationLog = require('../DataStores/ConversationLog')
+
 var CompleteFeedback = function(Context){    
+    ConversationLog.log(Context)
     let platform = "Unknown"
     let isMobile = "Speaker"
     if (Context.deviceProfile.isMobile()) {
