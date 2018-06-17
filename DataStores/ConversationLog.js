@@ -21,29 +21,27 @@ var conversationLogSchema = new mongoose.Schema(
 
 
 conversationLogSchema.statics.log = function(Context){
-    return new Promise((resolve,reject) =>{
-        UserStore.get(Context)
+    UserStore.get(Context)
         .then((userData) =>{
             if(!userData.conversationId)
                 console.log("ConversationLog: Couldn't get conversationId from user store")
-
-            this.findById(userData.conversationId)
-            .then((conversationLog) => {
-                StateProvider.getState(Context)
-                    .then((state) => {
-                        var interaction = {
-                            state:  state,
-                            intent: Context.intentName,
-                            slots: JSON.stringify(Context.args)
-                        }
-                        conversationLog.interactions.push(interaction)
-                        conversationLog.markModified('interactions')
-                        conversationLog.save().then((data) => {console.log(data)}).catch((err) => {console.log(err)})
+            else{
+                this.findById(userData.conversationId)
+                .then((conversationLog) => {
+                    StateProvider.getState(Context)
+                        .then((state) => {
+                            var interaction = {
+                                state:  state,
+                                intent: Context.intentName,
+                                slots: JSON.stringify(Context.args)
+                            }
+                            conversationLog.interactions.push(interaction)
+                            conversationLog.markModified('interactions')
+                            conversationLog.save()
+                        })
                     })
-            })
-            .catch((err) => {console.log("ConversationLog: " + err)})
-        })
-    })
+            }
+        }).catch((err) => {console.log("ConversationLog: " + err)})
 }
 
 

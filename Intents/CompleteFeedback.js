@@ -20,12 +20,12 @@ var CompleteFeedback = function(Context){
     UserStore.get(Context).then((userData) => 
     {
         var conversationId = userData.conversationId;
-        feedback =  conversationId + " || " + platform + " - " + isMobile + " || " + Context.args.feedback;
+        feedback =  conversationId + " || " + platform + " - " + isMobile + " || " + Context.rawInput;
         axios({
             method: 'post',
             headers:{"Content-type":"application/json"},
             data: {text: feedback},
-            url: process.env.FEEDBACK_RIVER_APP
+            url: process.env.FEEDBACK_RIVER_URL
         }).then((response) => {
             console.log("Feedback sent to Slack successfully.")
         }).catch((error) => {
