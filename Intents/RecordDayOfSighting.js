@@ -7,6 +7,19 @@ const ConversationLog = require('../DataStores/ConversationLog')
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
 
+//https://stackoverflow.com/questions/23593052/format-javascript-date-to-yyyy-mm-dd
+var formatDate = function(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 var RecordDayOfSighting = function(Context){
     //This stuff is probably worth putting some log statements around for user testing
     ConversationLog.log(Context)
@@ -42,6 +55,21 @@ var RecordDayOfSighting = function(Context){
                     .finish()
             }
         } else {
+            if(dateMatch)
+            {
+                let parsedDate = new Date(dateMatch)
+                var now = new Date()
+                if(parsedDate > now)
+                {
+                    var yearsInFuture = parsedDate.getFullYear() - now.getFullYear();
+                    if (yearsInFuture == 1 || yearsInFuture == 0){
+                        var occuringYear = parsedDate.getFullYear() - 1
+                        dateMatch = occuringYear + dateMatch.slice(4)
+                        console.log(dateMatch)
+                    }
+                }
+
+            }
             //DETERMINE NEXT STATE
             //CASE: No date or time provided
             if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
