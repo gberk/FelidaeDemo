@@ -94,8 +94,7 @@ app.post('/submitEmail', function (req, res) {
         // save email address to db
         recordEmailForReport(reportId, email)
         .then((report) => {
-            if(report)
-            {
+            if(report) {
                 let sendGridAuth = "Bearer " + process.env.SENDGRID_API_KEY
                 let sendGridRequest = {
                     "personalizations": [{
@@ -112,8 +111,6 @@ app.post('/submitEmail', function (req, res) {
                         "value": "Hello, World!"
                     }]
                 }
-            
-            
             
                 // send email to felidae team
                 axios({

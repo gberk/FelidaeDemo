@@ -25,7 +25,7 @@ var CompleteFeedback = function(Context){
             method: 'post',
             headers:{"Content-type":"application/json"},
             data: {text: feedback},
-            url: process.env.FEEDBACK_RIVER_URL
+            url: process.env.FEEDBACK_RIVER_APP
         }).then((response) => {
             console.log("Feedback sent to Slack successfully.")
         }).catch((error) => {
@@ -34,7 +34,7 @@ var CompleteFeedback = function(Context){
     })
 
     Context.assistant
-        .say("Thank you. Your feedback has been sent to the team.")
+        .say("Thank you. Your feedback has been sent to the team. Good bye.")
         .finish({"exit":true});
 }
 

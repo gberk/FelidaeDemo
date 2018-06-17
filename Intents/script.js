@@ -33,7 +33,6 @@ Script.REPORT_SUBMITTED = "Your report has been submitted. "
 Script.REPORT_NOT_SUBMITTED = "Ok, I have not submitted this report. "
                             + "Thank you"
 
-Script.FEEDBACK_REQUEST = "Do you have suggestions, questions, or experienced a bug? "
-                            + "Please leave us a note."
+Script.FEEDBACK_REQUEST = "Thank you for electing to leave us feedback. Can you describe your suggestion, question, or bug?"
 
 module.exports = Script
