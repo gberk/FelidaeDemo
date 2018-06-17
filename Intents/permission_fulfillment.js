@@ -9,8 +9,9 @@ var felidaeFundTeam = [process.env.RFLABS_NUMBER]
 // SMS message
 var smsBody = "This is a sightings alert!"
 var Script = require('./script')
+var ConverationLog = require('../DataStores/ConversationLog')
 var permission_fulfillment = function(Context){
-
+    ConverationLog.log(Context)
     // Twilio messaging service
     if (process.env.TWILIO_TRIGGER === 'active') {
         Promise.all(felidaeFundTeam.map(number => {

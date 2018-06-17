@@ -10,10 +10,13 @@ var Welcome = function(Context){
     report.save()
     var conversationLog = new ConversationLog()
     conversationLog.save()
-    UserStore.reset(Context)
-    UserStore.set(Context, {previousMessage: Script.WELCOME, reportId: report.id, conversationId: conversationLog.id })
-    // ConversationLog.log(Context)
-
+        .then(() => 
+        {
+            UserStore.reset(Context)
+            UserStore.set(Context, {previousMessage: Script.WELCOME, reportId: report.id, conversationId: conversationLog.id })
+            ConversationLog.log(Context)
+        })
+    
     Context.assistant
         .say("Welcome to Felidae Fund's puma sightings report tool. ")
         .say(Script.WELCOME)

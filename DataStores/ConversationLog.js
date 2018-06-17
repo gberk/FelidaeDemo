@@ -21,7 +21,8 @@ var conversationLogSchema = new mongoose.Schema(
 
 
 conversationLogSchema.statics.log = function(Context){
-    UserStore.get(Context)
+    return new Promise((resolve,reject) =>{
+        UserStore.get(Context)
         .then((userData) =>{
             if(!userData.conversationId)
                 console.log("ConversationLog: Couldn't get conversationId from user store")
@@ -37,13 +38,31 @@ conversationLogSchema.statics.log = function(Context){
                             slots: JSON.stringify(Context.args)
                         }
                         conversationLog.interactions.push(interaction)
-                        conversationLog.save()
+                        conversationLog.markModified('interactions')
+                        conversationLog.save().then((data) => {console.log(data)}).catch((err) => {console.log(err)})
                     })
             })
             .catch((err) => {console.log("ConversationLog: " + err)})
         })
+    })
     
+}
+
+conversationLogSchema.statics.findByContext = function(Context){
+    return new Promise((resolve, reject) =>{
+        UserStore.get(Context)
+        .then((userData) =>{
+            if(!userData.conversationId)
+                console.log("ConversationLog: Couldn't get conversationId from user store")
     
+            this.findById(userData.conversationId)
+                .then((conversationLog) => {
+                    resolve(conversationLog) 
+                })
+        })
+    })
+    
+
 }
 
 module.exports = mongoose.model('ConversationLog', conversationLogSchema)
