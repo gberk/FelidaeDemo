@@ -1,8 +1,8 @@
-var StateProvider = require('../DataStores/StateProvider')
-var UserStore = require('../DataStores/UserStore')
-var ConversationLog = require('../DataStores/ConversationLog')
-var Script = require('./script')
-var Report = require('../DataStores/Reports')
+const StateProvider = require('../DataStores/StateProvider')
+const UserStore = require('../DataStores/UserStore')
+const ConversationLog = require('../DataStores/ConversationLog')
+const Script = require('./script')
+const Report = require('../DataStores/Reports')
 
 var Welcome = function(Context){
     StateProvider.setState(Context, "gettingPublicSafetyResponse")

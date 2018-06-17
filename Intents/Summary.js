@@ -1,8 +1,10 @@
-var StateProvider = require('../DataStores/StateProvider')
-var UserStore = require('../DataStores/UserStore')
-var Script = require('./script')
+const StateProvider = require('../DataStores/StateProvider')
+const UserStore = require('../DataStores/UserStore')
+const Script = require('./script')
+const ConversationLog = require('../DataStores/ConversationLog')
 
 var Summary = function(Context){
+    ConversationLog.log(Context)
     var location = {
         fullAddress: Context.args.fullAddress,
         streetAddress: Context.args.streetAddress,
