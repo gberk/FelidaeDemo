@@ -29,7 +29,6 @@ conversationLogSchema.statics.log = function(Context){
 
             this.findById(userData.conversationId)
             .then((conversationLog) => {
-                console.log(conversationLog)
                 StateProvider.getState(Context)
                     .then((state) => {
                         var interaction = {
@@ -45,24 +44,7 @@ conversationLogSchema.statics.log = function(Context){
             .catch((err) => {console.log("ConversationLog: " + err)})
         })
     })
-    
 }
 
-conversationLogSchema.statics.findByContext = function(Context){
-    return new Promise((resolve, reject) =>{
-        UserStore.get(Context)
-        .then((userData) =>{
-            if(!userData.conversationId)
-                console.log("ConversationLog: Couldn't get conversationId from user store")
-    
-            this.findById(userData.conversationId)
-                .then((conversationLog) => {
-                    resolve(conversationLog) 
-                })
-        })
-    })
-    
-
-}
 
 module.exports = mongoose.model('ConversationLog', conversationLogSchema)
