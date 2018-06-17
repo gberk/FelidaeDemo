@@ -71,9 +71,8 @@ hr {
 
 .column-1-links {
     display: flex;
-    width: 50%;
-    justify-content: flex-end;
-    padding-right: 1em;
+    width: 100%;
+    justify-content: center;
 }
 
 .column-2-links {

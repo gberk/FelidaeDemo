@@ -10,15 +10,15 @@ var SubmitReport = function(Context){
 		.say(Script.REPORT_SUBMITTED_MOBILE)
 		.card({
 			"basicCard": {
-				"title": "Thank you for your report",
+				"title": "Follow-up with Felidae Conservation Fund",
 				"subtitle": "",
-				"formattedText": "Register your email for follow up",
+				"formattedText": "Leave your email so a member of the Felidae Conservation Fund team can follow-up with you on your sightings report.",
 				"image": {
-					"url": "https://storage.googleapis.com/ff-sightingsreport.appspot.com/felida-logo.jpg",
+					"url": "https://storage.googleapis.com/ff-sightingsreport.appspot.com/felidae-fb.jpeg",
 					"accessibilityText": "image attribute"
 				},
 				"buttons": [{
-					"title": "Refresh Labs",
+					"title": "Register email",
 					"openUrlAction": {
 						"url":  process.env.WEBSITE_BASEURL + "/notification?report="+ Context.report.url 
 					}

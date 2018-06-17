@@ -87,16 +87,8 @@ hr {
 
 .column-1-links {
     display: flex;
-    width: 50%;
-    justify-content: flex-end;
-    padding-right: 1em;
-}
-
-.column-2-links {
-    display: flex;
-    width: 50%;
-    justify-content: flex-start;
-    padding-left: 1em;
+    width: 100%;
+    justify-content: center;
 }
 
 .results {
@@ -198,16 +190,8 @@ hr {
     
     .column-1-links {
         display: flex;
-        width: 50%;
-        justify-content: flex-end;
-        padding-right: 1em;
-    }
-
-    .column-2-links {
-        display: flex;
-        width: 50%;
-        justify-content: flex-start;
-        padding-left: 1em;
+        width: 100%;
+        justify-content: center;
     }
 
     .results {
