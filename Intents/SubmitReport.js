@@ -4,8 +4,11 @@ const ConversationLog = require('../DataStores/ConversationLog')
 var SubmitReport = function(Context){
     ConversationLog.log(Context)
     Context.report.isTest = false;
-    Context.assistant
-        .say(Script.REPORT_SUBMITTED)
+
+    if(Context.deviceProfile.isMobile())
+    {
+        Context.assistant
+        .say(Script.REPORT_SUBMITTED_MOBILE)
         .card({
             "basicCard": {
               "title": "Thank you for your report",
@@ -26,6 +29,14 @@ var SubmitReport = function(Context){
             }
         })
         .finish({"exit": true})
+    } else {
+            {
+                Context.assistant
+                .say(Script.REPORT_SUBMITTED)
+                .finish({"exit": true})
+        }
+    }
+
 
     Context.report.save()
 }

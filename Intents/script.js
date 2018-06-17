@@ -20,10 +20,15 @@ Script.SIGHTING_REPORTED = "Thank you. "
                         + "Would you like to send this report to the Felidae team?" 
                         
 
-Script.REPORT_SUBMITTED = "Your report has been submitted. "
+Script.REPORT_SUBMITTED_MOBILE = "Your report has been submitted. "
                             + "If you would like a member of the Felidae Fund to follow up with you, "
                             + "click the link below. "
                             + "Thank you!"
+
+Script.REPORT_SUBMITTED = "Your report has been submitted. "
++ "If you would like to follow up on your report, "
++ "you can contact the team at info@felidaefund.org "
++ "Thank you!"
 
 Script.REPORT_NOT_SUBMITTED = "Ok, I have not submitted this report. "
                             + "Thank you"
