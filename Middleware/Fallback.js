@@ -9,7 +9,7 @@ var Fallback = function(Context){
         else {
             UserStore.get(Context)
                 .then((data) => {
-                    ConversationLog.findById(data.conversationId)
+                    ConversationLog.log(Context)
                     
                     Context.assistant
                     .say("Sorry, I didn't get that. ")
