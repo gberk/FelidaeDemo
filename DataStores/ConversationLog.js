@@ -37,6 +37,7 @@ conversationLogSchema.statics.log = function(Context){
                                 rawInput: Context.rawInput || "",
                                 slots: JSON.stringify(Context.args)
                             }
+                            console.log(interaction)
                             conversationLog.interactions.push(interaction)
                             conversationLog.markModified('interactions')
                             conversationLog.save()
