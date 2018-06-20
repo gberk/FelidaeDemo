@@ -7,9 +7,10 @@ var Fallback = function(Context){
         if(Context.intentName != "Fallback") resolve();
 
         else {
+            ConversationLog.log(Context)
             UserStore.get(Context)
                 .then((data) => {
-                    ConversationLog.log(Context)
+
                     
                     Context.assistant
                     .say("Sorry, I didn't get that. ")
