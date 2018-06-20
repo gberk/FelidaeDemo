@@ -8,6 +8,7 @@ var Interaction = new mongoose.Schema(
         state: String,
         intent: String,
         slots: String,
+        rawInput: String,
         speechInput: String
     }
 )
