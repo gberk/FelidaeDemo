@@ -33,6 +33,7 @@ conversationLogSchema.statics.log = function(Context){
                             var interaction = {
                                 state:  state,
                                 intent: Context.intentName,
+                                rawInput: Context.rawInput || "",
                                 slots: JSON.stringify(Context.args)
                             }
                             conversationLog.interactions.push(interaction)
