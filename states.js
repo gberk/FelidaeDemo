@@ -4,6 +4,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -18,6 +19,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -40,6 +42,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -63,6 +66,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -80,6 +84,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -97,6 +102,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -117,6 +123,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -135,6 +142,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
@@ -154,6 +162,7 @@ var States = {
         activeIntents: [
             // standard
             "Welcome",
+            "WelcomeAlt",
             "IDK",
             "Fallback",
             "EnableTest",
