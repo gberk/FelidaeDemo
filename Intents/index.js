@@ -1,7 +1,7 @@
 var Intents = {}
 
 Intents.Welcome = require('./Welcome');
-Intents.WelcomeAlt = require('./Wecome')
+Intents.WelcomeAlt = require('./Welcome').
 Intents.RequestLocation = require('./RequestLocation');
 Intents.JustOccurred = Intents.RequestLocation;
 
