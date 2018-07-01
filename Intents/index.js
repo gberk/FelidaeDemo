@@ -14,9 +14,6 @@ Intents.Summary = require("./Summary")
 Intents.Fallback = require("./Fallback")
 Intents.Repeat = require('./Fallback')
 
-Intents.EnableTest = require("./EnableTest")
-Intents.EnableProd = require("./EnableProd")
-
 Intents.SubmitReport = require('./SubmitReport')
 Intents.DoNotSubmit = require('./DoNotSubmit')
 Intents.StartFeedback = require("./StartFeedback")

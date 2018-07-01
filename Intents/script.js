@@ -1,20 +1,20 @@
 var Script = {}
 
-Script.WELCOME = "Is this concerning immediate public safety?"
+Script.WELCOME = "Is there an immediate public safety concern?"
 
 Script.CURRENT_SIGHTING = "Did this sighting just occur?";
 
-Script.REQUEST_ADDRESS = "Can you tell me an address nearest to where you sighted the puma?";
+Script.REQUEST_ADDRESS = "Now, can you give me an address close to where this happened?";
 
-Script.REQUEST_LOCATION_PERMISSION = "I'll need your location in order to report this sighting. " 
-                                    + "To grab your current location,"
+Script.REQUEST_LOCATION_PERMISSION = "If you don't mind, I can attach your current GPS location to this report. " 
+                                    + "To do that,"
 
-Script.REQUEST_DATETIME_OF_SIGHTING = "Can you tell me which day and time you sighted the puma?"
+Script.REQUEST_DATETIME_OF_SIGHTING = "What day and time did you see the animal?"
 
-Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you sight the puma? " 
+Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you see the animal? " 
                                 + "If you don't remember, you can say I don't remember"
                                 
-Script.REQUEST_TIME_OF_SIGHTING = "Around what time of day did you sight the puma?"
+Script.REQUEST_TIME_OF_SIGHTING = "And, around what time was it?"
 
 Script.SIGHTING_REPORTED = "Thank you. " 
                         + "Would you like to send this report to the Felidae team?" 
@@ -26,7 +26,7 @@ Script.REPORT_SUBMITTED_MOBILE = "Your report has been submitted. "
                             + "Thank you!"
 
 Script.REPORT_SUBMITTED = "Your report has been submitted. "
-                            + "If you would like to follow up on your report, "
+                            + "If you would like to follow up, "
                             + "please contact us at info@felidaefund.org "
                             + "Thank you!"
 
