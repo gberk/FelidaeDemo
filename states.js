@@ -29,13 +29,12 @@ var States = {
             // unique
             "Affirmative",
             "Negative",
-            "RequestLocation",
-            "RequestPastOrPresentSighting"
+            "RequestLocation"
         ],
         middleware: ["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
         affirmative: "RequestLocation",
-        negative: "RequestPastOrPresentSighting",
-        skipTo: "RequestPastOrPresentSighting"
+        negative: "RequestDayOfSighting",
+        skipTo: "RequestDayOfSighting"
     },
 
     'gettingPresentSighting': {
