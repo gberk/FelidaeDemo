@@ -8,7 +8,7 @@ var StartFeedback = function(Context){
     Context.assistant
         .say(Script.FEEDBACK_REQUEST)
         .reprompt.say(Script.FEEDBACK_REQUEST)
-        .setContext('feedback', 1)
+        .setContext('feedback', 3)
         .finish();
 }
 

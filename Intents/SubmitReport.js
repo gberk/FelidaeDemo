@@ -1,5 +1,6 @@
 const Script = require('./script')
 const ConversationLog = require('../DataStores/ConversationLog')
+const StateProvider = require('../DataStores/StateProvider')
 
 var SubmitReport = function(Context){
     ConversationLog.log(Context)
@@ -25,12 +26,18 @@ var SubmitReport = function(Context){
 				}]
 			}
 		})
-        .finish({"exit": true})
     } else {
 		Context.assistant
         .say(Script.REPORT_SUBMITTED)
-        .finish({"exit": true})
-    }
+	}
+
+	UserStore.set(Context, {previousMessage: Script.REQUEST_FEEDBACK})
+	StateProvider.setState(Context, "requestingFeedback")
+	Context.assistant
+	.pause("1s").say("Before you go, ").pause("600ms")
+	.say(Script.REQUEST_FEEDBACK)
+	.setContext('feedback', 3)
+	.finish()
     Context.report.save()
 }
 

@@ -174,6 +174,26 @@ var States = {
         ],
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat", "Feedback"],
         skipTo: "Welcome"
+    },
+
+    "requestingFeedback": {
+        activeIntents: [
+            // standard
+            "Welcome",
+            "WelcomeAlt",
+            "IDK",
+            "Fallback",
+            "EnableTest",
+            "EnableProd",
+            "Repeat",
+            //unique
+            "CaptureFeedback",
+            "StartFeedback",
+            "EndConversation"
+        ],
+        middleware: ["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
+        affirmative: "StartFeedback",
+        negative: "EndConversation"
     }
 }
 

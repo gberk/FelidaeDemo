@@ -18,5 +18,6 @@ Intents.SubmitReport = require('./SubmitReport')
 Intents.DoNotSubmit = require('./DoNotSubmit')
 Intents.StartFeedback = require("./StartFeedback")
 Intents.CaptureFeedback = require("./CompleteFeedback")
+Intents.EndConversation = require('./EndConversation')
 
 module.exports = Intents;

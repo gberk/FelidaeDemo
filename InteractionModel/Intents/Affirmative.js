@@ -13,7 +13,13 @@ const Affirmative = {
         "Yea",
         "Yes it is",
         "Yes please",
-        ""
+        "Ok",
+        "O.k.",
+        "No problem",
+        "Fine",
+        "K",
+        "Okay",
+        "Okie doke"
     ]
 }
 

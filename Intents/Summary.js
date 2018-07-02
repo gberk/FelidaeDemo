@@ -18,6 +18,10 @@ var Summary = function(Context){
     StateProvider.setState(Context, "askingToSubmitReport")
     UserStore.set(Context, {previousMessage: Script.SIGHTING_REPORTED})
     Context.assistant
+        .say("Ok. ")
+        .pause('200ms')
+        .say("All set. ")
+        .pause("500ms")
         .say(Script.SIGHTING_REPORTED)
         .finish();
 }

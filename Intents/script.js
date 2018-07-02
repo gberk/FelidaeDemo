@@ -1,13 +1,13 @@
 var Script = {}
 
-Script.WELCOME = "Is there an immediate public safety concern?"
+Script.WELCOME = "Is there any immediate danger?"
 
 Script.CURRENT_SIGHTING = "Did this sighting just occur?";
 
 Script.REQUEST_ADDRESS = "Now, can you give me an address close to where this happened?";
 
-Script.REQUEST_LOCATION_PERMISSION = "If you don't mind, I can attach your current GPS location to this report. " 
-                                    + "To do that,"
+Script.REQUEST_LOCATION_PERMISSION = "I'm able to attach your current GPS location to this report. " 
+                                    + "If you don't mind, "
 
 Script.REQUEST_DATETIME_OF_SIGHTING = "What day and time did you see the animal?"
 
@@ -16,23 +16,21 @@ Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you see the animal
                                 
 Script.REQUEST_TIME_OF_SIGHTING = "And, around what time was it?"
 
-Script.SIGHTING_REPORTED = "Thank you. " 
-                        + "Would you like to send this report to the Felidae team?" 
+Script.SIGHTING_REPORTED = "Would you like me to go ahead and pass this report to my team at Felidae?" 
                         
 
-Script.REPORT_SUBMITTED_MOBILE = "Your report has been submitted. "
-                            + "If you would like a member of the Felidae Fund to follow up, "
-                            + "please use the link below to leave us your email. "
-                            + "Thank you!"
+Script.REPORT_SUBMITTED_MOBILE = "All set. "
+                            + "If you would like us to follow up, "
+                            + "please use the link below to leave your email. "
 
-Script.REPORT_SUBMITTED = "Your report has been submitted. "
+Script.REPORT_SUBMITTED = "All set. "
                             + "If you would like to follow up, "
                             + "please contact us at info@felidaefund.org "
-                            + "Thank you!"
 
-Script.REPORT_NOT_SUBMITTED = "Ok, I have not submitted this report. "
-                            + "Thank you"
+Script.REPORT_NOT_SUBMITTED = "No problem. You can find more information at felidaefund.org"
 
-Script.FEEDBACK_REQUEST = "Thank you for electing to leave us feedback. Can you describe your suggestion, question, or bug?"
+Script.REQUEST_FEEDBACK = "Please let me know of any suggestions you have so that I can improve in the future."
+
+Script.FEEDBACK_REQUEST = "Please tell me about any issues you experienced, or ways that I can improve."
 
 module.exports = Script

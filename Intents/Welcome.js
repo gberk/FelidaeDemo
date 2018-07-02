@@ -18,10 +18,13 @@ var Welcome = function(Context){
         })
     
     Context.assistant
-        .say("Hi, I’m an assistant with Felidae Fund. If you’ve seen a wild cat, I can help you report it")
-        .pause("150ms")
-        .say("to help with our conservation efforts. First, tell me,")
-        .pause("350ms")
+        .say("Hi, I’m an assistant with Felidae Fund.")
+        .pause("250ms")
+        .say("If you've encountered a wild cat, I'll help you report the sighting")
+        .pause("50ms").say("to assist with our conservation efforts.")
+        .pause("300ms")
+        .say("First,").pause("100ms").say("tell me,")
+        .pause("400ms")
         .say(Script.WELCOME)
         .reprompt.say(Script.WELCOME)
         .finish()
