@@ -4,7 +4,7 @@ Script.WELCOME = "Is there any immediate danger?"
 
 Script.CURRENT_SIGHTING = "Did this sighting just occur?";
 
-Script.REQUEST_ADDRESS = "Now, can you give me an address close to where this happened?";
+Script.REQUEST_ADDRESS = "Can you give me an address close to where this happened?";
 
 Script.REQUEST_LOCATION_PERMISSION = "I'm able to attach your current GPS location to this report. " 
                                     + "If you don't mind, "
@@ -29,7 +29,7 @@ Script.REPORT_SUBMITTED = "All set. "
 
 Script.REPORT_NOT_SUBMITTED = "No problem. You can find more information at felidaefund.org"
 
-Script.REQUEST_FEEDBACK = "Please let me know of any suggestions you have so that I can improve in the future."
+Script.REQUEST_FEEDBACK = "Do you have any suggestions or feedback you would be willing to share?"
 
 Script.FEEDBACK_REQUEST = "Please tell me about any issues you experienced, or ways that I can improve."
 

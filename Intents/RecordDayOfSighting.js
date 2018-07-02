@@ -52,7 +52,6 @@ var RecordDayOfSighting = function(Context){
                 Context.assistant
                     .say("Perfect, thank you. ")
                     .pause("500ms")
-                    .say("Now, ")
                     .say(Script.REQUEST_ADDRESS)
                     .reprompt.say(Script.REQUEST_ADDRESS)
                     .finish()

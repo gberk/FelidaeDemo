@@ -189,7 +189,9 @@ var States = {
             //unique
             "CaptureFeedback",
             "StartFeedback",
-            "EndConversation"
+            "EndConversation",
+            "Affirmative",
+            "Negative"
         ],
         middleware: ["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
         affirmative: "StartFeedback",

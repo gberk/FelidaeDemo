@@ -32,7 +32,7 @@ var permission_fulfillment = function(Context){
         StateProvider.setState(Context, "askingToSubmitReport")
         UserStore.set(Context, {previousMessage: Script.SIGHTING_REPORTED})
         Context.assistant
-            .say("Thank you")
+            .say("Thank you. ")
             .pause("500ms")
             .say(Script.SIGHTING_REPORTED)
             .finish();
