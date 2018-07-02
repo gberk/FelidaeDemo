@@ -34,7 +34,7 @@ var CompleteFeedback = function(Context){
     })
 
     Context.assistant
-        .say("Thank you. Your feedback has been sent to the team. Goodbye.")
+        .say("Thank you so much. Your feedback has been sent to the team. Goodbye.")
         .finish({"exit":true});
 }
 

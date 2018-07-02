@@ -10,7 +10,6 @@ var DoNotSubmit = function(Context){
     .say(Script.REPORT_NOT_SUBMITTED)
     .pause("1s").say("Before you go, ").pause("600ms")
     .say(Script.REQUEST_FEEDBACK)
-    .setContext("feedback", 1)
     .finish()
 
 }
