@@ -60,7 +60,11 @@ const Negative = {
         "Absolutely not",
         "Please do not",
         "Please don't",
-        "No thank you"
+        "No thank you",
+        "There isn't",
+        "There is not",
+        "Not that I know of",
+        "I doubt it"
     ]
 }
 

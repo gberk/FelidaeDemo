@@ -48,10 +48,7 @@ var WelcomeAlt = {
         "report a wild cat sighting",
         "I want to report a wild cat sighting",
         "I would like to report a wild cat sighting",
-        "report a wild cat sighting",
-        ""
-
-
+        "report a wild cat sighting"
     ]
 }
 
