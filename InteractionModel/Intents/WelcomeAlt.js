@@ -14,6 +14,8 @@ var WelcomeAlt = {
         "I want to report a mountain lion sighting",
         "I want to report a big cat sighting",
         "I want to report a panther sighting",
+        "I want to report a sighting to Felidae Fund",
+        "I want to report a sighting to Felidae Conseravation Fund",
         "report a puma sighting",
         "report a cougar sighting",
         "report a mountain lion sighting",
@@ -41,6 +43,13 @@ var WelcomeAlt = {
         "Oh my god I just saw a mountain lion",
         "Oh my god I just saw a big cat",
         "Oh my god I just saw a panther",
+        "I just saw a wild cat",
+        "I saw a wild cat",
+        "report a wild cat sighting",
+        "I want to report a wild cat sighting",
+        "I would like to report a wild cat sighting",
+        "report a wild cat sighting",
+        ""
 
 
     ]
