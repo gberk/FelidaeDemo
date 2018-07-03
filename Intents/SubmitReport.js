@@ -36,6 +36,7 @@ var SubmitReport = function(Context){
 	Context.assistant
 	.pause("1s").say("Before you go, ").pause("600ms")
 	.say(Script.REQUEST_FEEDBACK)
+	.setContext("feedback", 10)
 	.finish()
     Context.report.save()
 }

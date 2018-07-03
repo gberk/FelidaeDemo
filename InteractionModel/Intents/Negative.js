@@ -64,7 +64,7 @@ const Negative = {
         "There isn't",
         "There is not",
         "Not that I know of",
-        "I doubt it"
+        'I doubt it'
     ]
 }
 
