@@ -67,7 +67,11 @@ const Affirmative = {
         "Yes please send to the team",
         "Yes let the team know",
         "Yes please let the team know",
-        "Yes please inform the team"
+        "Yes please inform the team",
+        "Yes I'm afraid",
+        "Yes please help",
+        "Yes I am in danger",
+        "Yes please I'm in danger"
     ]
 }
 
