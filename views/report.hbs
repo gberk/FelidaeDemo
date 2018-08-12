@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/feedback.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Report Review</title>
-    </head>
-    <body>
-        <div class="main">
-            <div class="notificationContainer">
-                <div class="navigation">
-                    <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/css/reports.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <title>Report Review</title>
+</head>
+<body>
+    <div class="main">
+        <div class="notificationContainer">
+            <div class="navigation">
+                <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+            </div>
+            <hr>
+            <div class="reportsContainer">
+                <div class="reportsTitle">
+                    <span>Report</span>
                 </div>
-                <hr>
-                <div class="feedbackRequest">
-                    <div class="instructions">
-                        <span>Report Review</span>
-                    </div>
-                    <div>
-                        <p>Location of Sighting: {{this.report.locationOfSighting}}</p>
-                        <p>Time of Sighting: {{this.report.timeOfSighting}}</p>
-                    </div>
+                <div class="reportInformation">
+                    <p>Location of Sighting: {{this.report.locationOfSighting}}</p>
+                    <p>Time of Sighting: {{this.report.timeOfSighting}}</p>
                 </div>
-                <div class="footer">
-                    <div class="row-links">
-                        <div class="column-1-links">
-                            <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
-                        </div>
+            </div>
+            <div class="footer">
+                <div class="row-links">
+                    <div class="column-1-links">
+                        <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

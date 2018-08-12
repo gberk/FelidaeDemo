@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/feedback.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Wildcat Feedback</title>
-    </head>
-    <body>
-        <div class="main">
-            <div class="notificationContainer">
-                <div class="navigation">
-                    <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/feedback.css">
+
+    <title>Wildcat Feedback</title>
+</head>
+<body>
+    <div class="main">
+        <div class="notificationContainer">
+            <div class="navigation">
+                <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+            </div>
+            <hr>
+            <div class="feedbackRequest">
+                <div class="instructions">
+                    <span>Suggestions, questions, or bugs? We'd love to hear from you!</span>
                 </div>
-                <hr>
-                <div class="feedbackRequest">
-                    <div class="instructions">
-                        <span>Suggestions, questions, or bugs? We'd love to hear from you!</span>
+                <div class="feedbackForm">
+                    <div class="inputContainer">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email (optional)"></input>
                     </div>
-                    <div class="feedbackForm">
-                        <div class="inputContainer">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email (optional)"></input>
-                        </div>
-                        <div class="results">
-                        </div>
-                        <div class="inputContainer">
-                            <textarea type="text" class="form-control" id="inputFeedback" placeholder="Tell us your feedback..." rows="7" ></textarea>
-                        </div>
-                        <button type="submit" onclick="sendFeedback()" class="btn btn-primary">Submit feedback</button>
+                    <div class="results">
                     </div>
-                    
+                    <div class="inputContainer">
+                        <textarea type="text" class="form-control" id="inputFeedback" placeholder="Tell us your feedback..." rows="7" ></textarea>
+                    </div>
+                    <button type="submit" onclick="sendFeedback()" class="btn btn-primary">Submit feedback</button>
                 </div>
-                <div class="footer">
-                    <div class="row-links">
-                        <div class="column-1-links">
-                            <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
-                        </div>
+                
+            </div>
+            <div class="footer">
+                <div class="row-links">
+                    <div class="column-1-links">
+                        <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type="text/javascript">
-            function sendFeedback() {
-                let message
-                let feedback = document.getElementById("inputFeedback").value
-                let email = document.getElementById("inputEmail").value
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        function sendFeedback() {
+            let message
+            let feedback = document.getElementById("inputFeedback").value
+            let email = document.getElementById("inputEmail").value
 
-                if (feedback === "") {
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter feedback before submitting</span>"
-                    return;
-                }
-
-                if (email != "") {
-                    message = {
-                        feedback: email + " || " + feedback
-                    }
-                } else {
-                    message = {
-                        feedback: "anonymous || " + feedback
-                    }
-                }
-
-                axios({
-                    method: 'post',
-                    url: '/webformFeedback',
-                    data: message
-                }).then((response) => {
-                    let result = {
-                        status: response.status,
-                        statusText: response.statusText
-                    }
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you for the feedback!</span>"
-                    console.log(result)
-                }).catch((error) => {
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
-                    console.log(error)
-                })
+            if (feedback === "") {
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter feedback before submitting</span>"
+                return;
             }
-        </script>
-    </body>
+
+            if (email != "") {
+                message = {
+                    feedback: email + " || " + feedback
+                }
+            } else {
+                message = {
+                    feedback: "anonymous || " + feedback
+                }
+            }
+
+            axios({
+                method: 'post',
+                url: '/webformFeedback',
+                data: message
+            }).then((response) => {
+                let result = {
+                    status: response.status,
+                    statusText: response.statusText
+                }
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you for the feedback!</span>"
+                console.log(result)
+            }).catch((error) => {
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
+                console.log(error)
+            })
+        }
+    </script>
+</body>
 </html>
