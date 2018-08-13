@@ -29,12 +29,36 @@ var States = {
             // unique
             "Affirmative",
             "Negative",
-            "RequestLocation"
+            "RequestLocation",
+            "RequestDeadOrAlive"
         ],
         middleware: ["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
         affirmative: "RequestLocation",
-        negative: "RequestDayOfSighting",
-        skipTo: "RequestDayOfSighting"
+        negative: "RequestDeadOrAlive",
+        skipTo: "RequestDeadOrAlive"
+    },
+
+    'gettingPumaAliveOrDead' : {
+        activeIntents: [
+            // standard
+            "Welcome",
+            "WelcomeAlt",
+            "IDK",
+            "Fallback",
+            "EnableTest",
+            "EnableProd",
+            "Repeat",
+            "StartFeedback",
+            // unique
+            "Affirmative",
+            "Negative",
+            "Dead",
+            "Alive",
+            "RequestDayOfSighting"
+        ],
+        middleware:["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
+        affirmative: "Alive",
+        negative:"Dead"
     },
 
     'gettingPresentSighting': {

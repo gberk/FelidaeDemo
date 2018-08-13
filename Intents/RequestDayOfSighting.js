@@ -6,7 +6,7 @@ var RequestDayOfSighting = function(Context){
     ConversationLog.log(Context)
     StateProvider.setState(Context,"gettingDayOfSighting")
     UserStore.set(Context, {previousMessage: Script.REQUEST_DATETIME_OF_SIGHTING})
-
+    //TODO record Dead or alive input
     Context.assistant
         .say(Script.REQUEST_DATETIME_OF_SIGHTING)
         .reprompt.say(Script.REQUEST_DATETIME_OF_SIGHTING)
