@@ -18,6 +18,7 @@ var Errors = require('./Errors')
 var StateProvider = require('./DataStores/StateProvider')
 var Middleware = require('./Middleware')
 
+
 //Set up db connection
 var mongoose = require('mongoose')
 mongoose.Promise = Promise;
@@ -134,6 +135,17 @@ app.post('/submitEmail', function (req, res) {
         .catch((err) => {
             res.send(err)
         })
+})
+
+let dbTest = require('./public/api/approveReport')
+
+app.get('/dbTest', function(req, res){
+    dbTest()
+        .then((rows)=> {
+            res.send(rows)
+        })
+        .catch((err) => {throw err; res.error(err)})
+    
 })
 
 app.post('/webformFeedback', function(req, res) {
