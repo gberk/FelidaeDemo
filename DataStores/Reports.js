@@ -1,7 +1,6 @@
 var mongoose = require('mongoose')
 
 //Credit to: https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-    //...and its their fault if it generates a four letter word
 var generateURL = function(length){
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
