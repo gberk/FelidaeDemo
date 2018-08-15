@@ -76,6 +76,7 @@ app.get('/report/:id', function(req, res) {
             let reportView={};
             reportView.dateReported = formatDate(r.createdAt)
             reportView.locationOfSighting = formatAddress(JSON.parse(r.addressOfSighting || r.latlonOfSighting))
+            reportView.timeOfSighting = r.dateOfSighting ? (`${r.dateOfSighting} @ ${r.timeOfSighting}`) : formatDate(r.createdAt)
             res.render('report', {report:reportView})
         })
         .catch((err) => {
@@ -85,7 +86,14 @@ app.get('/report/:id', function(req, res) {
 })
 
 function formatDate(date){
-    return date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + date.getHours() + ':' + date.getMinutes()
+    return date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + padTime(date.getHours()) + ':' + padTime(date.getMinutes())
+}
+
+function padTime(time){
+    if(time < 10)
+        return "0" + time
+    else return time
+
 }
 
 function formatAddress(address,acc){
