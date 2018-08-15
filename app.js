@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.set('view engine', 'hbs');
 require('dotenv').config()
 
-app.use(express.static('public'))
+app.use(express.static('views'))
 
 var IntentMap = require('./Intents')
 var States = require('./states')
@@ -43,15 +43,15 @@ app.post('/alexa', function(req, res) {
 })
 
 app.get('/privacyPolicy', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/privacyPolicy.html'))
+    res.sendFile(path.join(__dirname + '/views/privacyPolicy.html'))
 })
 
 app.get('/notification/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/notification.html'))
+    res.sendFile(path.join(__dirname + '/views/notification.html'))
 })
 
 app.get('/feedback', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/feedback.html'))
+    res.sendFile(path.join(__dirname + '/views/feedback.html'))
 })
 
 app.get('/reports', function(req, res) {
