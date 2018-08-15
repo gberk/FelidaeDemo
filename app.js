@@ -154,14 +154,14 @@ app.post('/submitEmail', function (req, res) {
                         "to": [{
                             "email": email
                         }],
-                        "subject": "Thank you for registering with Felidae Conservation Fund!"
+                        "subject": "Thank you for your report"
                     }],
                     "from": {
                         "email": "wildcat@refreshlabs.co"
                     },
                     "content": [{
                         "type": "text/plain",
-                        "value": "Thank you for registering. Your report has been received by the Felidae Fund Team."
+                        "value": "Thank you for registering your email address. Your report has been received by the Felidae Fund Team."
                     }]
                 }
             

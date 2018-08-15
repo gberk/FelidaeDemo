@@ -23,7 +23,7 @@
                 </div>
                 <div class="results">
                 </div>
-                <div class="emailForm">
+                <div class="emailForm" id="emailInput">
                     <div class="inputContainer">
                         <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
                     </div>
@@ -69,6 +69,7 @@
                     status: response.status,
                     statusText: response.statusText
                 }
+                document.getElementById("emailInput").style.display = "none"
                 document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you. A Felidae Fund member will be in touch shorty.</span>"
                 console.log(result)
             }).catch((error) => {
