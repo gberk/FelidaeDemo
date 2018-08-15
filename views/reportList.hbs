@@ -5,10 +5,10 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="/css/notFound.css">
+    <link rel="stylesheet" type="text/css" href="/css/reports.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 
-    <title>Report not found</title>
+    <title>Report Review</title>
 </head>
 <body>
     <div class="main">
@@ -17,17 +17,14 @@
                 <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
             </div>
             <hr>
-            <div class="notFound">
-                <div class="message">
-                    <span>Report not found &#128531;</span>
+            <div class="reportsContainer">
+                <div class="reportsTitle">
+                    <span>Review Sighting Reports</span>
                 </div>
-            </div>
-            </div>
-            <div class="footer">
-                <div class="row-links">
-                    <div class="column-1-links">
-                        <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
-                    </div>
+                <div class="reportsList">
+                    {{#each reports}}
+                        <div><a href={{this.url}}>Report Dated {{this.dateReported}} </a></div>
+                    {{/each}}
                 </div>
             </div>
         </div>

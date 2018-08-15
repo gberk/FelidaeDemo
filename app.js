@@ -8,6 +8,7 @@ var axios = require('axios');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.set('view engine', 'hbs');
 require('dotenv').config()
 
 app.use(express.static('public'))
@@ -53,6 +54,58 @@ app.get('/feedback', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/feedback.html'))
 })
 
+app.get('/reports', function(req, res) {
+    Reports.find({isTest:false})
+        .then((reports) => {
+            var reportsListView = reports.map( (r => {
+                return {
+                    url: "/report/"+ r._id,
+                    dateReported: formatDate(r.createdAt)
+                }
+            }))
+            res.render('reportList', {reports:reportsListView})
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+})
+
+app.get('/report/:id', function(req, res) {
+    Reports.findById(req.params.id)
+        .then((r) => {
+            let reportView={};
+            reportView.dateReported = formatDate(r.createdAt)
+            reportView.locationOfSighting = formatAddress(JSON.parse(r.addressOfSighting || r.latlonOfSighting))
+            reportView.timeOfSighting = r.dateOfSighting ? (`${r.dateOfSighting} @ ${r.timeOfSighting}`) : formatDate(r.createdAt)
+            res.render('report', {report:reportView})
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
+})
+
+function formatDate(date){
+    return date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + padTime(date.getHours()) + ':' + padTime(date.getMinutes())
+}
+
+function padTime(time){
+    if(time < 10)
+        return "0" + time
+    else return time
+
+}
+
+function formatAddress(address,acc){
+    if(!acc) acc = ""
+    Object.keys(address).map(key => {
+        if(typeof(address[key]) === "object")
+            acc = formatAddress(address[key], acc)
+        else if (address[key] && address[key] != "")
+            acc += `${key} : ${address[key]} <br>`
+    })
+    return acc
+}
 
 app.get('/notFound', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/notFound.html'))

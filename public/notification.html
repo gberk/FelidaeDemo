@@ -1,80 +1,81 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/css/notification.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-        <title>Connect with Felidae Fund</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <div class="main">
-            <div class="notificationContainer">
-                <div class="navigation">
-                    <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/css/notification.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <title>Connect with Felidae Fund</title>
+</head>
+<body>
+    <div class="main">
+        <div class="notificationContainer">
+            <div class="navigation">
+                <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+            </div>
+            <hr>
+            <div class="emailRequest">
+                <div class="instructions">
+                    <span>Please provide us with your email address if you'd like a member of the Felidae Fund to follow-up on your sightings report</span>
                 </div>
-                <hr>
-                <div class="emailRequest">
-                    <div class="instructions">
-                        <span>Please provide us with your email address if you'd like a member of the Felidae Fund to follow-up on your sightings report</span>
-                    </div>
-                    <div class="results">
-                    </div>
-                    <div class="emailForm">
-                        <div class="inputContainer">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
-                        </div>
-                        
-                        <button type="submit" onclick="sendEmail()" class="btn btn-primary">Submit email</button>
-                    </div>
+                <div class="results">
                 </div>
-                <div class="footer">
-                    <div class="row-links">
-                        <div class="column-1-links">
-                            <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
-                        </div>
+                <div class="emailForm">
+                    <div class="inputContainer">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address">
+                    </div>
+                    <button type="submit" onclick="sendEmail()" class="btn btn-primary">Submit email</button>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="row-links">
+                    <div class="column-1-links">
+                        <a href="https://felidaefund.refreshlabs.co/privacyPolicy"><span>Privacy Policy</span></a>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type="text/javascript">
-            function getUrlParams(prop) {
-                var params = {};
-                var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
-                var definitions = search.split('&');
-                definitions.forEach( function(val, key) {
-                    var parts = val.split('=', 2);
-                    params[parts[0]] = parts[1];
-                } );
-                return(prop && prop in params) ? params[prop] : params;
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        function getUrlParams(prop) {
+            var params = {};
+            var search = decodeURIComponent(window.location.href.slice(window.location.href.indexOf('?') + 1));
+            var definitions = search.split('&');
+            definitions.forEach( function(val, key) {
+                var parts = val.split('=', 2);
+                params[parts[0]] = parts[1];
+            } );
+            return(prop && prop in params) ? params[prop] : params;
+        }
+        function sendEmail() {
+            let sendEmailRequest = {
+                emailAddress: document.getElementById("inputEmail").value,
+                reportId: getUrlParams("report")
             }
-            function sendEmail() {
-                let sendEmailRequest = {
-                    emailAddress: document.getElementById("inputEmail").value,
-                    reportId: getUrlParams("report")
-                }
-                if (sendEmailRequest.emailAddress === "") {
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter a valid email address</span>"
-                    return;
-                }
-                axios({
-                    method: 'post',
-                    url: '/submitEmail',
-                    data: sendEmailRequest
-                }).then((response) => {
-                    let result = {
-                        status: response.status,
-                        statusText: response.statusText
-                    }
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you. A Felidae Fund member will be in touch shorty.</span>"
-                    console.log(result)
-                }).catch((error) => {
-                    document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
-                    console.log(error)
-                })
+            if (sendEmailRequest.emailAddress === "") {
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Please enter a valid email address</span>"
+                return;
             }
-        </script>
-    </body>
+            axios({
+                method: 'post',
+                url: '/submitEmail',
+                data: sendEmailRequest
+            }).then((response) => {
+                let result = {
+                    status: response.status,
+                    statusText: response.statusText
+                }
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='success'>Thank you. A Felidae Fund member will be in touch shorty.</span>"
+                console.log(result)
+            }).catch((error) => {
+                document.getElementsByClassName("results")[0].innerHTML = "<span class='failure'>Sorry! An error has occurred</span>"
+                console.log(error)
+            })
+        }
+    </script>
+</body>
 </html>
