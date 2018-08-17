@@ -2,14 +2,14 @@ var Script = {}
 
 Script.WELCOME = "is there an immediate concern for public safety?"
 
-Script.DEAD_OR_ALIVE = "Was the wild cat still living when you saw it?"
+Script.DEAD_OR_ALIVE = "Was the puma still alive when you saw it?"
 
 Script.REQUEST_ADDRESS = "Can you give me an address close to where this happened?";
 
-Script.REQUEST_LOCATION_PERMISSION = "I'm able to tag your current GPS location to accurately inform my team of the wild cat's location. " 
+Script.REQUEST_LOCATION_PERMISSION = "I'm able to tag your current GPS location to accurately inform my team of the puma's location. " 
                                     + "If you don't mind, "
 
-Script.REQUEST_DATETIME_OF_SIGHTING = "When was this?"
+Script.REQUEST_DATETIME_OF_SIGHTING = "When did you see it?"
 
 Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you see the animal? " 
                                 + "If you don't remember, you can say I don't remember"
