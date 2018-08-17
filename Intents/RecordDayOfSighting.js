@@ -107,8 +107,6 @@ var RecordDayOfSighting = function(Context){
                 UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS })
 
                 Context.assistant
-                    .say("Got it! ")
-                    .pause("700ms")
                     .say(Script.REQUEST_ADDRESS)
                     .reprompt.say(Script.REQUEST_ADDRESS) 
                     .finish()
