@@ -18,9 +18,10 @@ var Dead = {
         "no someone killed it",
         "no someone killed her",
         "no someone killed him",
-        "i wasn't alive",
-        "i think it was dead",
-        "i don't think it was alive"
+        "It wasn't alive",
+        "I think it was dead",
+        "I don't think it was alive",
+        "It looked like it was dead"
     ]
 }
 

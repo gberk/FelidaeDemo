@@ -14,7 +14,8 @@ var Alive = {
         "it was pretty far away",
         "yes it was alive",
         "yes it was living",
-        "yes it running around"
+        "yes it was running around",
+        
     ]
 }
 
