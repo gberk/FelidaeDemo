@@ -17,6 +17,7 @@ var reportSchema = new mongoose.Schema(
     isTest: {type:Boolean, default: true},
     dateOfSighting: String,
     timeOfSighting: String,
+    momentOfSighting: String,
     latlonOfSighting: String,
     addressOfSighting: String,
     email: String,

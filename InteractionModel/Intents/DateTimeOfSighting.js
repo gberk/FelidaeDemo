@@ -10,8 +10,9 @@ var DateTimeOfSighting = {
         "around {'dateOfSighting': 'yesterday'}",
         "maybe around {'dateOfSighting': 'yesterday'}",
         "sometime around {'dateOfSighting': 'yesterday'}",
-        "Earlier {'dateOfSighting': 'today'}"
-    ],
+        "Earlier {'dateOfSighting': 'today'}",
+        "At {'dateOfSighting':'two last night'}"
+        ],
     slots: {
         "dateOfSighting": {
             dataType: ["@sys.date-time", "AMAZON.DATE"],
