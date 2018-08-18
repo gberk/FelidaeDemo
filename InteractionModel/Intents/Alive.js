@@ -2,6 +2,9 @@ var Alive = {
     name: "Alive",
     utterances: [
         "It was alive",
+        "It was a life",
+        "It was life",
+        "It was life living",
         "It's alive",
         "It is alive",
         "Living",

@@ -56,7 +56,7 @@ var States = {
             "Alive",
             "RequestDayOfSighting"
         ],
-        middleware:["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat"],
+        middleware:["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat", "RecordDeadOrAlive"],
         affirmative: "Alive",
         negative:"Dead"
     },

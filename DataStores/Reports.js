@@ -20,6 +20,7 @@ var reportSchema = new mongoose.Schema(
     latlonOfSighting: String,
     addressOfSighting: String,
     email: String,
+    liveSighting: String,
     url: {type:String, default: generateURL(6)}
     
 }, {timestamps: true})

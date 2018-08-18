@@ -86,7 +86,7 @@ app.get('/report/:id', function(req, res) {
 })
 
 function formatDate(date){
-    return date.getMonth() + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + padTime(date.getHours()) + ':' + padTime(date.getMinutes())
+    return (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + padTime(date.getHours()) + ':' + padTime(date.getMinutes())
 }
 
 function padTime(time){
