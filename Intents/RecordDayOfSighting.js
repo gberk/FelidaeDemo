@@ -14,7 +14,7 @@ const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))
 var RecordDayOfSighting = function(Context){
     ConversationLog.log(Context)
     let parsedDate = chrono.parse(Context.rawInput)[0]
-    console.log('here')
+    console.log(parsedDate.start)
     console.log("Dialogflow: " + Context.args.dateOfSighting)
 
     StateProvider.getState(Context).then(currentState => {
@@ -70,7 +70,7 @@ function followUpForTime(Context, parsedDate){
         var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
         var dateMatch = dateMatchedString[1]
         var timeMatch = dateMatchedString[6]
-        if(noTimeComponent(parsedDate, timeMatch))
+        if(noTimeComponent(parsedDate, timeMatch, Context.args.dateOfSighting))
         {
             UserStore.set(Context, {previousMessage: Script.REPEAT_TIME_OF_SIGHTING})
             Context.assistant
@@ -119,26 +119,6 @@ function followUpForTime(Context, parsedDate){
                     moveToGettingLocation(Context)
                 })
             }
-            // else if(noon(parsedDate, timeMatch))
-            // {
-            //     UserStore.get(Context).then(ctx => {
-            //         let previouslyRecordedTime = ctx.inProgressSightingTime;
-            //         previouslyRecordedTime.start.assign('hour', 12)
-            //         previouslyRecordedTime.start.assign('meridiem',1)
-            //         recordToDB(Context, previouslyRecordedTime)
-            //         moveToGettingLocation(Context)
-            //     })
-            // } 
-            // else if(midnight(parsedDate, timeMatch))
-            // {
-            //     UserStore.get(Context).then(ctx => {
-            //         let previouslyRecordedTime = ctx.inProgressSightingTime;
-            //         previouslyRecordedTime.start.assign('hour', 0)
-            //         previouslyRecordedTime.start.assign('meridiem',0)
-            //         recordToDB(Context, previouslyRecordedTime)
-            //         moveToGettingLocation(Context)
-            //     })
-            // }
     }
             
 }
@@ -224,10 +204,10 @@ function midnight(parsedDate, timeMatch)
     return parsedDate.start.get('hour') == 0 && parseInt(timeMatch.substring(0,2)) == 0
 }
 
-function noTimeComponent(parsedDate, timeMatch)
+function noTimeComponent(parsedDate, timeMatch, dateOfSighting)
 {
-    if(timeMatch) return false;
-    if(!parsedDate || parsedDate.start.get('hour') == 12) return true;
+    if(timeMatch && !dateOfSighting.includes('/')) return false;
+    if(!parsedDate || parsedDate.start.get('hour') == 12 || dateOfSighting.includes('/')) return true;
     return false
 }
 
