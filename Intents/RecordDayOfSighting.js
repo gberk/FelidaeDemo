@@ -21,6 +21,7 @@ var formatDate = function(date) {
 }
 
 var RecordDayOfSighting = function(Context){
+    console.log("args: " + JSON.stringify(Context.args))
     //This stuff is probably worth putting some log statements around for user testing
     ConversationLog.log(Context)
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)

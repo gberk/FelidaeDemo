@@ -55,7 +55,7 @@ app.get('/feedback', function(req, res) {
 })
 
 app.get('/reports', function(req, res) {
-    Reports.find({isTest:false})
+    Reports.find({isTest:false}).sort({createdAt: 'descending'})
         .then((reports) => {
             var reportsListView = reports.map( (r => {
                 return {
