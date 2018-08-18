@@ -1,0 +1,108 @@
+.main {
+    display: block;
+    width:100%;
+    font-family: 'Lato', sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.felidaeLogo {
+    width: 20vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contentBox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 20px 20px 20px;
+    width:60%;
+    font-family: 'Lato', sans-serif;
+    justify-content: center;
+    background-color: #F1F5F7;
+}
+
+.imgBox {
+    padding: 0 0 20px 0;
+}
+
+.content {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 20px 20px 20px;
+    width:80%;
+    text-align: center;
+    background-color:white;
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+}
+
+.footer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: grey;
+    padding: 30px 0 0px 0;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .main {
+        display: block;
+        width:100%;
+        font-family: 'Lato', sans-serif;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .felidaeLogo {
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .contentBox {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 20px 20px 20px;
+        width:80%;
+        font-family: 'Lato', sans-serif;
+        justify-content: center;
+        background-color: #F1F5F7;
+    }
+    
+    .imgBox {
+        padding: 0 0 20px 0;
+    }
+    
+    .content {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 20px 20px 20px;
+        width:80%;
+        text-align: center;
+        background-color:white;
+        border: 1px solid #E2E2E2;
+        border-radius: 10px;
+    }
+    
+    .footer {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        color: grey;
+        padding: 30px 0 0px 0;
+        font-size: 0.8em;
+        text-align: center;
+    }
+}

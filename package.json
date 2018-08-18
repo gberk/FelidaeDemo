@@ -10,6 +10,7 @@
   "author": "Refresh Labs",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "axios": "^0.18.0",
     "ayva": "^0.0.14",
     "body-parser": "^1.18.3",

@@ -115,6 +115,7 @@ var Reports = require('./DataStores/Reports')
 
 var recordEmailForReport = function(reportId, email){
     return new Promise((resolve, reject) => {
+        resolve()
         Reports.find({url:reportId})
             .then((report) => {
 
@@ -140,49 +141,17 @@ var recordEmailForReport = function(reportId, email){
    
 }
 
+const SendEmail = require('./Email/sendEmail')
+
 app.post('/submitEmail', function (req, res) {
     let email = req.body.emailAddress
     let reportId = req.body.reportId
-
         // save email address to db
         recordEmailForReport(reportId, email)
         .then((report) => {
-            if(report) {
-                let sendGridAuth = "Bearer " + process.env.SENDGRID_API_KEY
-                let sendGridRequest = {
-                    "personalizations": [{
-                        "to": [{
-                            "email": email
-                        }],
-                        "subject": "Thank you for your report"
-                    }],
-                    "from": {
-                        "email": "wildcat@refreshlabs.co"
-                    },
-                    "content": [{
-                        "type": "text/plain",
-                        "value": "Thank you for registering your email address. Your report has been received by the Felidae Fund Team."
-                    }]
-                }
-            
-                // send email to felidae team
-                axios({
-                    method:'post',
-                    headers: {
-                        Authorization: sendGridAuth
-                    },
-                    url: 'https://api.sendgrid.com/v3/mail/send',
-                    data: sendGridRequest
-                }).then((response) => {
-                    let result = {
-                        status: response.status,
-                        statusText: response.statusText
-                    }
-                    res.send(result)
-                }).catch((error) => {
-                    res.send(error)
-                })
-            }
+            SendEmail(email).then((result) => {
+                res.send(result);
+            })
         })
         .catch((err) => {
             res.send(err)
