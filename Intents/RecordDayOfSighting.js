@@ -13,13 +13,19 @@ const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))
 
 var RecordDayOfSighting = function(Context){
     ConversationLog.log(Context)
-    let parsedDate = chrono.parse(Context.rawInput)[0]
-    console.log(parsedDate.start)
+    let parsedDate = chrono.parse(Context.rawInput)
+    if(parsedDate && parsedDate[0])
+    {
+        parsedDate= parsedDate[0]
+    } 
+    else
+    {
+        parsedDate = null
+    }
     StateProvider.getState(Context).then(currentState => {
         switch(currentState){
             case "gettingDayOfSighting": {getDayOfSighting(Context, parsedDate); break;}
             case "gettingTimeOfSighting":{followUpForTime(Context, parsedDate); break;}
-            case "gettingMeridiem": {followUpForMeridiem(Context, parsedDate); break;}
         }
     })
 }
@@ -29,21 +35,54 @@ var RecordDayOfSighting = function(Context){
 */ ////
 function getDayOfSighting(Context, parsedDate){
     //No match
+    var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
+    var dateMatch = dateMatchedString[1]
+    var timeMatch = dateMatchedString[6]
+
+
+    if(timeMatch && !Context.args.dateOfSighting.includes('/')){
+        if(parsedDate && parsedDate.start && (noon(parsedDate, timeMatch) || midnight(parsedDate, timeMatch)))
+        {
+            if(noon(parsedDate, timeMatch)) {
+                parsedDate = chrono.parse(`today at noon`)[0];
+            }
+            else if(midnight(parsedDate, timeMatch)) {
+                parsedDate = chrono.parse(`today at midnight`)[0]
+            }
+            recordToDB(Context,parsedDate)
+            moveToGettingLocation(Context)
+        } else {
+            parsedDate = chrono.parse(`today at ${parseInt(timeMatch.substring(0,2))}`)
+            UserStore.set(Context, {inProgressSightingTime: parsedDate})
+            moveToGettingMeridiem(Context)
+        }
+
+        return;
+    }
+
+
     if(!knownDate(parsedDate))
     {
-        UserStore.set(Context, {previousMessage: Script.REQUEST_DATETIME_OF_SIGHTING})
-        Context.assistant
-            .say("I didn't get that. ")
-            .say(Script.REQUEST_DATETIME_OF_SIGHTING)
-            .reprompt.say(Script.REQUEST_DATETIME_OF_SIGHTING)
-            .finish()
+        if(knownTime(parsedDate) && knownTimeOfDay(parsedDate)){
+            let today = new Date()
+            parsedDate.start.assign('day', today.getDay())
+            parsedDate.start.assign('month', today.getMonth())
+            parsedDate.start.assign('year', today.getFullYear())
+            recordToDB(Context,parsedDate)
+            moveToGettingLocation(Context)
+        } else {
+            UserStore.set(Context, {previousMessage: Script.REQUEST_DATETIME_OF_SIGHTING})
+            Context.assistant
+                .say("I didn't get that. ")
+                .say(Script.REQUEST_DATETIME_OF_SIGHTING)
+                .reprompt.say(Script.REQUEST_DATETIME_OF_SIGHTING)
+                .finish()
+        }
         return;
     }
 
     UserStore.set(Context, {inProgressSightingTime: parsedDate})    
-    var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
-    var dateMatch = dateMatchedString[1]
-    var timeMatch = dateMatchedString[6]
+
     //Day + Time Perfect
     if((knownTime(parsedDate) && knownTimeOfDay(parsedDate)) || (knownTime(parsedDate) && parseInt(timeMatch.substring(0,2)) >= 12))
     {
@@ -79,12 +118,12 @@ function followUpForTime(Context, parsedDate){
                 .finish()
             return;
         }
-
+        console.log(parsedDate)
         if(!parsedDate){
             let hourOfSighting = parseInt(Context.args.dateOfSighting.substring(0,2))
             UserStore.get(Context).then(ctx => {
                 let previouslyRecordedTime = ctx.inProgressSightingTime;
-                
+                console.log('here ')
                 //Existing AM/PM from first pass
                 if(impliedTime(previouslyRecordedTime) && previouslyRecordedTime.start.get('hour') != 12 || previouslyRecordedTime.start.isCertain('meridiem'))
                 {
@@ -120,16 +159,9 @@ function followUpForTime(Context, parsedDate){
             
 }
 
-function followUpForMeridiem(Context)
-{
-        //No Meridiem
-            //Retry
-        //Meridem Perfect
-        ////Follow up state: gettingLocations
-}
-
 function recordToDB(Context, chronoDate)
 {
+    console.log('saving date to database', chronoDate.start.date().toString())
     Context.report.momentOfSighting = chronoDate.start.date()
     Context.report.save()
 }
