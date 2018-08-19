@@ -14,7 +14,7 @@ const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))
 var RecordDayOfSighting = function(Context){
     ConversationLog.log(Context)
     let parsedDate = chrono.parse(Context.rawInput)[0]
-
+    console.log(parsedDate.start)
     StateProvider.getState(Context).then(currentState => {
         switch(currentState){
             case "gettingDayOfSighting": {getDayOfSighting(Context, parsedDate); break;}
@@ -45,7 +45,7 @@ function getDayOfSighting(Context, parsedDate){
     var dateMatch = dateMatchedString[1]
     var timeMatch = dateMatchedString[6]
     //Day + Time Perfect
-    if(knownTime(parsedDate) && knownTimeOfDay(parsedDate) || knownTime(parsedDate) && parseInt(timeMatch.substring(0,2) >= 12))
+    if((knownTime(parsedDate) && knownTimeOfDay(parsedDate)) || (knownTime(parsedDate) && parseInt(timeMatch.substring(0,2)) >= 12))
     {
         recordToDB(Context,parsedDate)
         moveToGettingLocation(Context)
