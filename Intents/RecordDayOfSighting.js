@@ -14,8 +14,6 @@ const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))
 var RecordDayOfSighting = function(Context){
     ConversationLog.log(Context)
     let parsedDate = chrono.parse(Context.rawInput)[0]
-    console.log(parsedDate.start)
-    console.log("Dialogflow: " + Context.args.dateOfSighting)
 
     StateProvider.getState(Context).then(currentState => {
         switch(currentState){
@@ -43,9 +41,11 @@ function getDayOfSighting(Context, parsedDate){
     }
 
     UserStore.set(Context, {inProgressSightingTime: parsedDate})    
-
+    var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
+    var dateMatch = dateMatchedString[1]
+    var timeMatch = dateMatchedString[6]
     //Day + Time Perfect
-    if(knownTime(parsedDate) && knownTimeOfDay(parsedDate))
+    if(knownTime(parsedDate) && knownTimeOfDay(parsedDate) || knownTime(parsedDate) && parseInt(timeMatch.substring(0,2) >= 12))
     {
         recordToDB(Context,parsedDate)
         moveToGettingLocation(Context)
@@ -59,7 +59,6 @@ function getDayOfSighting(Context, parsedDate){
 
     //Day + Am/PM but no time
     //Day only
-    //Tested
     else{
         moveToTimeOfSighting(Context)
     }
@@ -87,7 +86,6 @@ function followUpForTime(Context, parsedDate){
                 let previouslyRecordedTime = ctx.inProgressSightingTime;
                 
                 //Existing AM/PM from first pass
-                //Tested
                 if(impliedTime(previouslyRecordedTime) && previouslyRecordedTime.start.get('hour') != 12 || previouslyRecordedTime.start.isCertain('meridiem'))
                 {
                     let inferredMeridiem = previouslyRecordedTime.start.get('hour') > 12 ? 1 : 0
@@ -100,7 +98,6 @@ function followUpForTime(Context, parsedDate){
                     recordToDB(Context, previouslyRecordedTime)
                     moveToGettingLocation(Context)
 
-                //Tested
                 } else {
                     previouslyRecordedTime.start.assign('hour', hourOfSighting)
                     UserStore.set(Context, {inProgressSightingTime: previouslyRecordedTime})
