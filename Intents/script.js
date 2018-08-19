@@ -16,7 +16,7 @@ Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you see the animal
                                 
 Script.REQUEST_TIME_OF_SIGHTING = "And, around what time was it?"
 
-Script.REQUEST_AM_PM = "AM or PM?"
+Script.REQUEST_AM_PM = "Was it in the morning or afternoon?"
 
 Script.SIGHTING_REPORTED = "Would you like me to go ahead and pass this report to my team at Felidae?" 
                         

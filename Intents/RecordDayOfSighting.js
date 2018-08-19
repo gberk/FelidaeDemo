@@ -147,8 +147,10 @@ function moveToTimeOfSighting(Context)
 function moveToGettingMeridiem(Context)
 {
     StateProvider.setState(Context, stateForMeridiemFollowUp)
+    
     UserStore.set(Context, {previousMessage: Script.REQUEST_AM_PM})
     Context.assistant
+        .setContext('timeOfDay', 1)
         .say(Script.REQUEST_AM_PM)
         .reprompt.say(Script.REQUEST_AM_PM)
         .finish()

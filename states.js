@@ -133,7 +133,9 @@ var States = {
             "Repeat",
             "StartFeedback",
             // unique
-            "DateTimeOfSighting"
+            "DateTimeOfSighting",
+            "Afternoon",
+            "Morning"
         ],
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
         skipTo: "Summary"
