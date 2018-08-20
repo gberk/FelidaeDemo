@@ -56,9 +56,9 @@ var RecordDayOfSighting = function(Context){
 
 function certainTime(chronoDate, timeMatch){
     var slotHour = parseInt(timeMatch.substring(0,2))
-    if(slotHour >= 12 && !timeMatch.includes("/")) return true;
+    if(slotHour > 12 && !timeMatch.includes("/")) return true;
     if(!chronoDate || !chronoDate[0]) return true; //We probably got a numerical time input
-    if( chronoDate[0].start.get('hour') == 6 && !chronoDate[0].start.isCertain('hour')) return true;
+    if( chronoDate[0].start.get('hour') == 6 && !chronoDate[0].start.isCertain('hour') && !slotHour == 8) return true;
 
     return chronoDate[0].start.isCertain("hour")
 }
@@ -173,7 +173,7 @@ function timeFollowUp(Context, dateMatch, timeMatch, amPM, timeIsCertain)
                 if(amPM) followUpForLocation(Context,dateMatch,timeMatch,amPM)
                 else followUpForMeridiem(Context,dateMatch,timeMatch)
             } else {
-
+                followUpForMeridiem(Context,dateMatch,timeMatch, amPM)
             }
         })
     }
