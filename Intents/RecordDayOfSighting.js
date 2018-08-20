@@ -80,11 +80,11 @@ function inferAmPm(slotTime, chronoDate)
         // console.log("I3")
         return "pm"//Inferred PM
     }
-    if(cHour < 12 && slotHour <12 )
+    if(cHour < 12 && slotHour < 12 )
     {
         console.log("I4")
 
-        if(cHour != slotHour) {//Here, we might get "yesterday morning" as a first input
+        if(cHour != slotHour) {
             return "am"
         } else if(cHour == 12 && slotHour == 8 && !chronoDate.isCertain('meridiem')){
             return "am"
