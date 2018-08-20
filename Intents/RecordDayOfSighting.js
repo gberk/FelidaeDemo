@@ -86,8 +86,6 @@ function inferAmPm(slotTime, chronoDate)
 
         if(cHour != slotHour) {//Here, we might get "yesterday morning" as a first input
             return "am"
-         }else if (cHour == slotHour && chronoDate.isCertain('hour')){
-            return "am"
         }else{
             return null; //We cannot be confident about AM here; we might have yesterday at 3, or we might have yesterday at 3 in the morning
         }
