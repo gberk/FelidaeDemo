@@ -9,18 +9,18 @@ const chrono = require('chrono-node') //Test before updating this component
 //Adapted from: https://stackoverflow.com/questions/12756159/regex-and-iso8601-formatted-datetime
 const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))?(Z?)/
 
-//https://stackoverflow.com/questions/23593052/format-javascript-date-to-yyyy-mm-dd
-var formatDate = function(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+// //https://stackoverflow.com/questions/23593052/format-javascript-date-to-yyyy-mm-dd
+// var formatDate = function(date) {
+//     var d = new Date(date),
+//         month = '' + (d.getMonth() + 1),
+//         day = '' + d.getDate(),
+//         year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+//     if (month.length < 2) month = '0' + month;
+//     if (day.length < 2) day = '0' + day;
 
-    return [year, month, day].join('-');
-}
+//     return [year, month, day].join('-');
+// }
 
 var RecordDayOfSighting = function(Context){
     console.log("args: " + JSON.stringify(Context.args))
@@ -33,28 +33,34 @@ var RecordDayOfSighting = function(Context){
 
     console.log(dateMatch, timeMatch)
     var amPM;
-    var timeIsCertain = false;
-    if(chronoDate[0]) {
-        console.log(chronoDate[0].start)
+    var timeIsCertain;
+    if(timeMatch) timeIsCertain = certainTime(chronoDate, timeMatch);
+    if(chronoDate[0] && timeMatch) {
+        
         amPM = inferAmPm(timeMatch, chronoDate[0].start)
-        timeIsCertain = certainTime(chronoDate[0].start)
-        console.log(`Time is certain: ${timeIsCertain}`)
-        console.log(`Inferred meridiem: ${amPM}`)
     }
+    console.log(chronoDate[0])
+    console.log(`Inferred meridiem: ${amPM}`)
+    console.log(`Time is certain: ${timeIsCertain}`)
     
 
     StateProvider.getState(Context).then(userState => {
         if(userState == stateForTimeFollowUp)
         {
-            timeFollowUp(Context, dateMatch, timeMatch, amPM)
+            timeFollowUp(Context, dateMatch, timeMatch, amPM, timeIsCertain)
         } else {
             extractTimeAndDate(Context, dateMatch, timeMatch, amPM, timeIsCertain)
         }
     })
 }
 
-function certainTime(chronoDate){
-    return chronoDate.isCertain("hour")
+function certainTime(chronoDate, timeMatch){
+    var slotHour = parseInt(timeMatch.substring(0,2))
+    if(slotHour >= 12 && !timeMatch.includes("/")) return true;
+    if(!chronoDate || !chronoDate[0]) return true; //We probably got a numerical time input
+    if( chronoDate[0].start.get('hour') == 6 && !chronoDate[0].start.isCertain('hour')) return true;
+
+    return chronoDate[0].start.isCertain("hour")
 }
 
 function inferAmPm(slotTime, chronoDate)
@@ -76,8 +82,16 @@ function inferAmPm(slotTime, chronoDate)
     }
     if(cHour < 12 && slotHour <12 )
     {
-        // console.log("I4")
-        return null;  //We cannot be confident about AM here; we might have yesterday at 3, or we might have yesterday at 3 in the morning
+        console.log("I4")
+
+        if(cHour != slotHour) {//Here, we might get "yesterday morning" as a first input
+            return "am"
+         }else if (cHour == slotHour && chronoDate.isCertain('hour')){
+            return "am"
+        }else{
+            return null; //We cannot be confident about AM here; we might have yesterday at 3, or we might have yesterday at 3 in the morning
+        }
+          
     }
     console.log("Why are you here?")
     return null; 
@@ -100,7 +114,6 @@ function extractTimeAndDate(Context, dateMatch, timeMatch, amPM, timeIsCertain)
             }
         }
     }
-    
     //CASE: No date or time provided
     if(!Context.args.dateOfSighting || (!dateMatch && !timeMatch))
     {
@@ -138,6 +151,34 @@ function extractTimeAndDate(Context, dateMatch, timeMatch, amPM, timeIsCertain)
         }
     }
 }
+
+function timeFollowUp(Context, dateMatch, timeMatch, amPM, timeIsCertain)
+{
+    //We're currently ignoring the case where someone specifies a date first, and then a date and time as a follow up
+    if(!timeMatch)
+    {
+        Context.assistant
+        .say("I didn't get that. ")
+        .say(REPEAT_TIME_OF_SIGHTING)
+        .reprompt.say(REPEAT_TIME_OF_SIGHTING)
+        .finish()
+    } else {
+        UserStore.get(Context).then(ctx => {
+            let inProgressDate = ctx.inProgressDate
+            amPM = amPM || inProgressDate.amPM
+            dateMatch = dateMatch || inProgressDate.dateMatch
+            console.log(`Inferred meridiem: ${amPM}`)
+            if(timeIsCertain)
+            {
+                if(amPM) followUpForLocation(Context,dateMatch,timeMatch,amPM)
+                else followUpForMeridiem(Context,dateMatch,timeMatch)
+            } else {
+
+            }
+        })
+    }
+}
+
 
 function followUpForTime(Context, dateMatch, timeMatch, amPM)
 {
@@ -186,29 +227,6 @@ function updateTimeForAmPM(timeMatch, amPM)
     }
 }
 
-function timeFollowUp(Context, dateMatch, timeMatch, amPM)
-{
-    //We're currently ignoring the case where someone specifies a date first, and then a date and time as a follow up
-    if(!timeMatch)
-    {
-        Context.assistant
-        .say("I didn't get that. ")
-        .say(REPEAT_TIME_OF_SIGHTING)
-        .reprompt.say(REPEAT_TIME_OF_SIGHTING)
-        .finish()
-    } else {
-        StateProvider.setState(Context, stateForLocationFollowUp)
-        UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
-        Context.report.timeOfSighting = timeMatch;
-        Context.report.save()
-        Context.assistant
-            .say("Perfect, thank you. ")
-            .pause("500ms")
-            .say(Script.REQUEST_ADDRESS)
-            .reprompt.say(Script.REQUEST_ADDRESS)
-            .finish()
-    }
-}
 
 
 

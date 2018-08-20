@@ -11,6 +11,8 @@ Script.REQUEST_LOCATION_PERMISSION = "I'm able to tag your current GPS location 
 
 Script.REQUEST_DATETIME_OF_SIGHTING = "When did you see it?"
 
+Script.REQUEST_AMPM = "In the afternoon?"
+
 Script.REPEAT_TIME_OF_SIGHTING = "Around what time of day did you see the animal? " 
                                 + "If you don't remember, you can say I don't remember"
                                 
