@@ -36,10 +36,13 @@ var RecordDayOfSighting = function(Context){
     var timeIsCertain;
     if(timeMatch) timeIsCertain = certainTime(chronoDate, timeMatch);
     if(chronoDate[0] && timeMatch) {
-        
+        console.log(chronoDate[0])
         amPM = inferAmPm(timeMatch, chronoDate[0].start)
+        console.log(amPM)
+        if(amPM ==null && Context.rawInput.toUpperCase().includes("MORNING"))
+            amPM = "am"        
     }
-    console.log(chronoDate[0])
+    
     console.log(`Inferred meridiem: ${amPM}`)
     console.log(`Time is certain: ${timeIsCertain}`)
     
