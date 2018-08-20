@@ -26,5 +26,7 @@ Intents.StartFeedback = require("./StartFeedback")
 Intents.CaptureFeedback = require("./CompleteFeedback")
 Intents.EndConversation = require('./EndConversation')
 
+Intents.Afternoon = require("./RequestLocation")
+Intents.Morning = require("./RequestLocation")
 
 module.exports = Intents;

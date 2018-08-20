@@ -121,6 +121,26 @@ var States = {
         skipTo: "Summary"
     },
 
+    'gettingMeridiem': {
+        activeIntents: [
+            // standard
+            "Welcome",
+            "WelcomeAlt",
+            "IDK",
+            "Fallback",
+            "EnableTest",
+            "EnableProd",
+            "Repeat",
+            "StartFeedback",
+            // unique
+            "DateTimeOfSighting",
+            "Afternoon",
+            "Morning"
+        ],
+        middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
+        skipTo: "Summary"
+    },
+
     'gettingGPSLocation': {
         activeIntents: [
             // standard

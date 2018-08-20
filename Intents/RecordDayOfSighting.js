@@ -196,6 +196,7 @@ function followUpForMeridiem(Context, dateMatch, timeMatch, amPM)
     UserStore.set(Context, {previousMessage: Script.REQUEST_AMPM ,inProgressDate: {dateMatch, timeMatch}})
     Context.assistant
         .say(Script.REQUEST_AMPM)
+        .setContext('timeOfDay', 1)
         .reprompt.say(Script.REQUEST_AMPM)
         .finish()
 }
