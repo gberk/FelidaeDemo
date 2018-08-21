@@ -6,4 +6,5 @@ Middleware.AttachReport = require('./AttachReport')
 Middleware.Repeat = require('./Repeat')
 Middleware.Feedback = require('./Feedback')
 Middleware.RecordDeadOrAlive = require('./RecordDeadOrAlive')
+Middleware.AmPm = require('./AmPm')
 module.exports = Middleware

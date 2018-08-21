@@ -23,8 +23,6 @@ const dateTimeRegex = /((\d{4})-(\d{2})-(\d{2}))?(T?)((\d{2})\:(\d{2})\:(\d{2}))
 // }
 
 var RecordDayOfSighting = function(Context){
-    console.log("args: " + JSON.stringify(Context.args))
-    //This stuff is probably worth putting some log statements around for user testing
     ConversationLog.log(Context)
     var dateMatchedString = Context.args.dateOfSighting.match(dateTimeRegex)
     var dateMatch = dateMatchedString[1]
@@ -89,7 +87,7 @@ function inferAmPm(slotTime, chronoDate)
 
         if(cHour != slotHour) {
             return "am"
-        } else if(cHour == 12 && slotHour == 8 && !chronoDate.isCertain('meridiem')){
+        } else if(cHour == 12 && slotHour == 8 && !chronoDate.isCertain('meridiem')){  //Pattern matching slots vs library result. Not great
             return "am"
         }else{
             return null; //We cannot be confident about AM here; we might have yesterday at 3, or we might have yesterday at 3 in the morning
@@ -223,7 +221,7 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 function updateTimeForAmPM(timeMatch, amPM)
 {
     let hour = parseInt(timeMatch.substring(0,2))
-    if(amPM == 1 && hour < 12)
+    if(amPM == "pm" && hour < 12)
     {
         return hour+12 + timeMatch.slice(2)
     }else {
