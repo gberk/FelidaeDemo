@@ -8,8 +8,8 @@ var Fallback = function(Context){
         if(Context.intentName != "Fallback") resolve();
 
         else {
-            StateProvider.get(Context).then(state => {
-               // if(state == "gettingMeridiem") Context.assistant.setContext('timeOfDay')
+            StateProvider.getState(Context).then(state => {
+               if(state == "gettingMeridiem") Context.assistant.setContext('timeOfDay')
 
                 ConversationLog.log(Context)
                 UserStore.get(Context)
