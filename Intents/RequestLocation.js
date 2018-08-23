@@ -5,7 +5,9 @@ const ConversationLog = require('../DataStores/ConversationLog')
 var RequestLocation = function(Context){
     ConversationLog.log(Context)
     StateProvider.getState(Context).then(state => {
-        if(!Context.deviceProfile.isMobile() || state == "gettingMeridiem")  {
+        if(!Context.deviceProfile.isMobile() ||
+         ["gettingTimeOfSighting", "gettingMeridiem", "gettingDayOfSighting"].includes(state) ){
+             
             StateProvider.setState(Context, "gettingLocation")
             UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
             Context.assistant

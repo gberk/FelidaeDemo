@@ -29,20 +29,20 @@ var RecordDayOfSighting = function(Context){
     var timeMatch = dateMatchedString[6]
     let chronoDate = chrono.parse(Context.rawInput) //Used to help clarify
 
-    console.log(dateMatch, timeMatch)
+    // console.log(dateMatch, timeMatch)
     var amPM;
     var timeIsCertain;
     if(timeMatch) timeIsCertain = certainTime(chronoDate, timeMatch);
     if(chronoDate[0] && timeMatch) {
-        console.log(chronoDate[0])
+        // console.log(chronoDate[0])
         amPM = inferAmPm(timeMatch, chronoDate[0].start)
-        console.log(amPM)
+        // console.log(amPM)
         if(amPM ==null && Context.rawInput.toUpperCase().includes("MORNING"))
             amPM = "am"        
     }
     
-    console.log(`Inferred meridiem: ${amPM}`)
-    console.log(`Time is certain: ${timeIsCertain}`)
+    // console.log(`Inferred meridiem: ${amPM}`)
+    // console.log(`Time is certain: ${timeIsCertain}`)
     
 
     StateProvider.getState(Context).then(userState => {
@@ -83,7 +83,7 @@ function inferAmPm(slotTime, chronoDate)
     }
     if(cHour < 12 && slotHour < 12 )
     {
-        console.log("I4")
+        // console.log("I4")
 
         if(cHour != slotHour) {
             return "am"

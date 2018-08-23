@@ -58,7 +58,8 @@ var States = {
         ],
         middleware:["RespondToYesNo", "Skip", "Fallback", "AttachReport", "Repeat", "RecordDeadOrAlive"],
         affirmative: "Alive",
-        negative:"Dead"
+        negative:"Dead",
+        skipTo: "RequestDayOfSighting"
     },
 
     'gettingPresentSighting': {
@@ -100,7 +101,7 @@ var States = {
             "DateTimeOfSighting"
         ],
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
-        skipTo: "Summary"
+        skipTo: "RequestLocation"
     },
 
     'gettingTimeOfSighting': {
@@ -118,7 +119,7 @@ var States = {
             "DateTimeOfSighting"
         ],
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
-        skipTo: "Summary"
+        skipTo: "RequestLocation"
     },
 
     'gettingMeridiem': {
@@ -142,7 +143,7 @@ var States = {
         middleware: ["Skip", "Fallback", "AttachReport", "Repeat", "AmPm", "RespondToYesNo"],
         affirmative: "Afternoon",
         negative: "Morning",
-        skipTo: "Summary"
+        skipTo: "RequestLocation"
     },
 
     'gettingGPSLocation': {
