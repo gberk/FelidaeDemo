@@ -10,7 +10,11 @@ var DateTimeOfSighting = {
         "around {'dateOfSighting': 'yesterday'}",
         "maybe around {'dateOfSighting': 'yesterday'}",
         "sometime around {'dateOfSighting': 'yesterday'}",
-        "Earlier {'dateOfSighting': 'today'}"
+        "Earlier {'dateOfSighting': 'today'}",
+        "I saw it today around {'dateOfSighting':'2'}",
+        "About {'dateOfSighting':'2'}",
+        "We saw the puma at {'dateOfSighting' : '3 in the afternoon'}",
+        "We saw the puma around {'dateOfSighting' : '2' }",
     ],
     slots: {
         "dateOfSighting": {

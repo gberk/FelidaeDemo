@@ -15,7 +15,10 @@ var Afternoon = {
         "in the p.m.",
         "{'time': 2} in the afternoon",
         "{'time': 10} at night",
-        "{'time': 3} p.m."
+        "{'time': 3} p.m.",
+        "{'time': 3} pm",
+        "pm",
+
     ],
     slots: {
         "time": {

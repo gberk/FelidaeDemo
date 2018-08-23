@@ -208,7 +208,7 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 
     Context.report.dateOfSighting = dateMatch;
     Context.report.timeOfSighting = updateTimeForAmPM(timeMatch, amPM);
-    console.log(`Saving report ${dateMatch} @ ${timeMatch}`)
+    console.log(`Saving report ${dateMatch} @ ${Context.report.timeOfSighting}`)
     Context.report.save()
 
     UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
@@ -221,6 +221,7 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 
 function updateTimeForAmPM(timeMatch, amPM)
 {
+    console.log(`Updating time ${timeMatch} using ${amPM}`)
     let hour = parseInt(timeMatch.substring(0,2))
     if(amPM == "pm" && hour < 12)
     {
