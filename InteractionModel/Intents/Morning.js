@@ -11,6 +11,13 @@ var Morning = {
         "in the a.m.",
         "{'time': 2} in the morning",
         "{'time': 3} a.m."
-    ]
+    ],
+    slots: {
+        "time": {
+            dataType: ["@sys.time", "AMAZON.DATE"],
+            isList: false,
+            required: false
+        }
+    }
 }
  module.exports = Morning 
