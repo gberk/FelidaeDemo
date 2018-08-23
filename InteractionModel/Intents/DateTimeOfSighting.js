@@ -15,6 +15,7 @@ var DateTimeOfSighting = {
         "About {'dateOfSighting':'2'}",
         "We saw the puma at {'dateOfSighting' : '3 in the afternoon'}",
         "We saw the puma around {'dateOfSighting' : '2' }",
+        "{'dateOfSighting': 'Yesterday at like 2 in the afternoon'}"
     ],
     slots: {
         "dateOfSighting": {

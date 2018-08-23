@@ -71,7 +71,20 @@ const Affirmative = {
         "Yes I'm afraid",
         "Yes please help",
         "Yes I am in danger",
-        "Yes please I'm in danger"
+        "Yes please I'm in danger",
+        "Yes I guess so",
+        "Probably",
+        "Yes I suppose",
+        "Yeah I guess",
+        "I suppose",
+        "Suppose so",
+        "Could be",
+        "Sure",
+        "Ya",
+        "Yes ma'am",
+        "Yep",
+        "Yes sir"
+
     ]
 }
 
