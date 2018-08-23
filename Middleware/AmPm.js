@@ -10,10 +10,10 @@ var AmPm = function(Context){
             
             UserStore.get(Context).then((userData) => {
                 Report.findById(userData.reportId, (err, report) => {
-                    let inProgressDate = Context.inProgressDate;
-                    report.dateOfSighting = inProgressDate.dateOfSighting;
+                    let inProgressDate = userData.inProgressDate;
+                    report.dateOfSighting = inProgressDate.dateMatch;
                     let amPM = Context.intentName == "Afternoon" ? "pm" : "am"
-                    report.timeOfSighting = updateTimeForAmPM(report.timeOfSighting, amPM)
+                    report.timeOfSighting = updateTimeForAmPM(inProgressDate.timeMatch, amPM)
                     console.log(`Saving time of sighting: ${report.dateOfSighting} @ ${report.timeOfSighting}`)
                     report.save()
                     resolve()

@@ -137,7 +137,7 @@ var States = {
             "Afternoon",
             "Morning"
         ],
-        middleware: ["Skip", "Fallback", "AttachReport", "Repeat"],
+        middleware: ["Skip", "Fallback", "AttachReport", "Repeat", "AmPm"],
         skipTo: "Summary"
     },
 
