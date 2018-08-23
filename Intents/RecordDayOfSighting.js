@@ -129,20 +129,27 @@ function extractTimeAndDate(Context, dateMatch, timeMatch, amPM, timeIsCertain)
     //CASE: Date only
     else if(dateMatch && !timeMatch)
     {
+        Context.report.dateOfSighting = dateMatch
+        Context.report.save()
         followUpForTime(Context, dateMatch, timeMatch, amPM)
     }
 
     //CASE: Date and Time
     else 
     {
+
         if(amPM)
         {
             if(timeIsCertain){
                 followUpForLocation(Context, dateMatch, timeMatch, amPM)
             } else {
+                Context.report.dateOfSighting = dateMatch
+                Context.report.save()
                 followUpForTime(Context,dateMatch ,timeMatch, amPM)
             }
         } else {
+            Context.report.dateOfSighting = dateMatch
+            Context.report.save()
             if(timeIsCertain)
             {
                 followUpForMeridiem(Context, dateMatch, timeMatch)
@@ -208,7 +215,6 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 
     Context.report.dateOfSighting = dateMatch;
     Context.report.timeOfSighting = updateTimeForAmPM(timeMatch, amPM);
-    console.log(`Saving report ${dateMatch} @ ${Context.report.timeOfSighting}`)
     Context.report.save()
 
     UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
@@ -221,7 +227,6 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 
 function updateTimeForAmPM(timeMatch, amPM)
 {
-    console.log(`Updating time ${timeMatch} using ${amPM}`)
     let hour = parseInt(timeMatch.substring(0,2))
     if(amPM == "pm" && hour < 12)
     {

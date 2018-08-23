@@ -76,7 +76,7 @@ app.get('/report/:id', function(req, res) {
             let reportView={};
             reportView.dateReported = formatDate(r.createdAt)
             reportView.locationOfSighting = formatAddress(JSON.parse(r.addressOfSighting || r.latlonOfSighting))
-            reportView.timeOfSighting = r.dateOfSighting ? (`${r.dateOfSighting} @ ${r.timeOfSighting}`) : formatDate(r.createdAt)
+            reportView.timeOfSighting = r.dateOfSighting ? (`${r.dateOfSighting} @ ${r.timeOfSighting || '(no time provided)'}`) : formatDate(r.createdAt)
             res.render('report', {report:reportView})
         })
         .catch((err) => {
