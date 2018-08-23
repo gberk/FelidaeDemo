@@ -132,12 +132,16 @@ var States = {
             "EnableProd",
             "Repeat",
             "StartFeedback",
+            "Affirmative",
+            "Negative",
             // unique
             "DateTimeOfSighting",
             "Afternoon",
             "Morning"
         ],
-        middleware: ["Skip", "Fallback", "AttachReport", "Repeat", "AmPm"],
+        middleware: ["Skip", "Fallback", "AttachReport", "Repeat", "AmPm", "RespondToYesNo"],
+        affirmative: "Afternoon",
+        negative: "Morning",
         skipTo: "Summary"
     },
 
