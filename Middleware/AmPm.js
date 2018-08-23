@@ -8,7 +8,7 @@ var AmPm = function(Context){
             .then(currentState => {
                 console.log(Context.intentName)
             if(currentState != "gettingMeridiem") return resolve();
-            let shouldSaveDate = !['Afternoon', 'Morning', 'Affirmative', 'Negative'].includes(Context.intentName)
+            let shouldSaveDate = !['Afternoon', 'Morning', 'Affirmative', 'Negative', 'Skip'].includes(Context.intentName)
             if(shouldSaveDate) return resolve()
 
             UserStore.get(Context).then((userData) => {
