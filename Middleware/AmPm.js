@@ -6,15 +6,18 @@ var AmPm = function(Context){
     return new Promise((resolve, reject) => {
         StateProvider.getState(Context)
             .then(currentState => {
-            if(currentState != "gettingMeridiem") resolve();
-            
+                console.log(Context.intentName)
+            if(currentState != "gettingMeridiem") return resolve();
+            let shouldSaveDate = !['Afternoon', 'Morning', 'Affirmative', 'Negative'].includes(Context.intentName)
+            if(shouldSaveDate) return resolve()
+
             UserStore.get(Context).then((userData) => {
                 Report.findById(userData.reportId, (err, report) => {
                     let inProgressDate = userData.inProgressDate;
                     report.dateOfSighting = inProgressDate.dateMatch;
                     let amPM = Context.intentName == "Afternoon" ? "pm" : "am"
                     report.timeOfSighting = updateTimeForAmPM(inProgressDate.timeMatch, amPM)
-                    console.log(`Saving time of sighting: ${report.dateOfSighting} @ ${report.timeOfSighting}`)
+                    console.log(` Saving time of sighting: ${report.dateOfSighting} @ ${report.timeOfSighting}`)
                     report.save()
                     resolve()
                 })

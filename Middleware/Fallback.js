@@ -1,5 +1,6 @@
-var UserStore = require('../DataStores/UserStore')
-var ConversationLog = require('../DataStores/ConversationLog')
+const UserStore = require('../DataStores/UserStore')
+const ConversationLog = require('../DataStores/ConversationLog')
+const StateProvider = require("../DataStores/StateProvider")
 const states = require('../states')
 
 var Fallback = function(Context){
@@ -7,16 +8,21 @@ var Fallback = function(Context){
         if(Context.intentName != "Fallback") resolve();
 
         else {
-            ConversationLog.log(Context)
-            UserStore.get(Context)
-                .then((data) => {
+            StateProvider.get(Context).then(state => {
+               // if(state == "gettingMeridiem") Context.assistant.setContext('timeOfDay')
 
-                    
-                    Context.assistant
-                    .say("Sorry, I didn't get that. ")
-                    .say(data.previousMessage)
-                    resolve()
-                })    
+                ConversationLog.log(Context)
+                UserStore.get(Context)
+                    .then((data) => {
+    
+                        
+                        Context.assistant
+                        .say("Sorry, I didn't get that. ")
+                        .say(data.previousMessage)
+                        resolve()
+                    })    
+            })
+            
         }
     })
 }
