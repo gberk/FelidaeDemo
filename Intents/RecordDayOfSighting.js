@@ -208,6 +208,7 @@ function followUpForLocation(Context, dateMatch, timeMatch, amPM)
 
     Context.report.dateOfSighting = dateMatch;
     Context.report.timeOfSighting = updateTimeForAmPM(timeMatch, amPM);
+    console.log(`Saving report ${dateMatch} @ ${timeMatch}`)
     Context.report.save()
 
     UserStore.set(Context, {previousMessage: Script.REQUEST_ADDRESS})
