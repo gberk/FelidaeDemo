@@ -28,7 +28,7 @@ Script.REPORT_SUBMITTED = "All set. "
                             + "If you would like to follow up, "
                             + "please contact us at info@bapp.org "
 
-Script.REPORT_NOT_SUBMITTED = "No problem. You can find more information at felidaefund.org, or contact our team at info@bapp.org or 415-354-5655."
+Script.REPORT_NOT_SUBMITTED = "No problem. You can find more information at felidaefund.org, contact our team at info@bapp.org or at 415-354-5655."
 
 Script.REQUEST_FEEDBACK = "Would you like to leave me some feedback on your experience?"
 
