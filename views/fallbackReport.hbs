@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/css/reports.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <title>Report Review</title>
+</head>
+<body>
+    <div class="main">
+        <div class="notificationContainer">
+            <div class="navigation">
+                <a href="http://www.felidaefund.org/"><img src="/img/felidae-notification-logo.png" alt="felidaeLogo" class="felidaeLogo"></a>
+            </div>
+            <hr>
+            <div class="reportsContainer">
+                <div class="reportsTitle">
+                    <span>Fallback Report</span>
+                </div>
+                <div class="reportsList">
+                    {{#each reports}}
+                        <div>State: {{this.state}}</div>
+                        <div>Phrase: {{this.rawInput}}</div>
+                        <br/>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

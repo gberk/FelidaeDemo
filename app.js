@@ -85,6 +85,14 @@ app.get('/report/:id', function(req, res) {
         })
 })
 
+app.get('/fallbackReport', function(req,res){
+    let fallbackReport = require('./Reports/fallbackReport')
+        
+    fallbackReport.run()
+        .then(fallbackReportData => res.render('fallbackReport', {reports:fallbackReportData}))
+        .catch((err) => {console.log(err); res.send(err)})
+})
+
 function formatDate(date){
     return (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear() + ' @ ' + padTime(date.getHours()) + ':' + padTime(date.getMinutes())
 }
